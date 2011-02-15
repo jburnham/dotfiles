@@ -72,3 +72,4 @@ endfunction
 
 nmap <silent> ;s :call ToggleSyntax()<CR>
 map ,pt :call PerlTidy()<CR>
+map ,nt :NERDTreeToggle<CR>
