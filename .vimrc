@@ -1,3 +1,4 @@
+call pathogen#runtime_append_all_bundles()
 filetype plugin on
 set ofu=syntaxcomplete#Complete
 set autoindent
@@ -70,6 +71,12 @@ function PerlTidy()
     exe ptline
 endfunction
 
-nmap <silent> ;s :call ToggleSyntax()<CR>
-map ,pt :call PerlTidy()<CR>
-map ,nt :NERDTreeToggle<CR>
+" Mappings {
+  nmap <silent> ;s :call ToggleSyntax()<CR>
+  map ,pt :call PerlTidy()<CR>
+  map ,nt :NERDTreeToggle<CR>
+  imap jj <Esc>
+  imap hh =>
+  map <C-N> :tabnext<CR>
+  map <C-P> :tabprev<CR>
+" }
