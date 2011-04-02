@@ -1,8 +1,6 @@
 call pathogen#runtime_append_all_bundles()
 filetype plugin on
-if has("gui_running")
-    colorscheme ir_black
-endif
+colorscheme ir_black
 set ofu=syntaxcomplete#Complete
 set autoindent
 set smartindent
