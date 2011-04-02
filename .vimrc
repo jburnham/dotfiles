@@ -1,5 +1,8 @@
 call pathogen#runtime_append_all_bundles()
 filetype plugin on
+if has("gui_running")
+    colorscheme ir_black
+endif
 set ofu=syntaxcomplete#Complete
 set autoindent
 set smartindent
@@ -75,6 +78,7 @@ endfunction
   nmap <silent> ;s :call ToggleSyntax()<CR>
   map ,pt :call PerlTidy()<CR>
   map ,nt :NERDTreeToggle<CR>
+  map ,t  :CommandT<CR>
   imap jj <Esc>
   imap hh =>
   map <C-N> :tabnext<CR>
