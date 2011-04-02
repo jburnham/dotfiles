@@ -72,6 +72,15 @@ function PerlTidy()
     exe ptline
 endfunction
 
+" Show syntax highlighting groups for word under cursor
+nmap ,sh :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
 " Mappings {
   nmap <silent> ;s :call ToggleSyntax()<CR>
   map ,pt :call PerlTidy()<CR>
