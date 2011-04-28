@@ -1,5 +1,6 @@
 # include what you want
 
+export PS1='[\u@\h]\w$ '
 export PATH=/usr/local/bin:$PATH:$HOME/bin
 
 # add this to the .bashrc: . $HOME/.bashrc.load
