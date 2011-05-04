@@ -1,6 +1,7 @@
 call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
 filetype plugin on
-colorscheme ir_black
+"colorscheme ir_black
 set ofu=syntaxcomplete#Complete
 set autoindent
 set smartindent
@@ -12,6 +13,9 @@ set smartindent
   set nocompatible " explicitly get out of vi-compatible mode
   set background=dark " we plan to use a dark background
   syntax on " syntax highlighting on
+  " Make sure that unsaved buffers that are to be put in the background are
+  " allowed to go in there (ie. the "must save first" error doesn't come up)
+  set hidden
 " }
 
 " Vim UI {
@@ -38,6 +42,9 @@ set smartindent
   set sidescrolloff=10 " Keep 5 lines at the size
   " statusline demo: ~\myfile[+] [FORMAT=format] [TYPE=type] [ASCII=000] [HEX=00] [POS=0000,0000][00%] [LEN=000]
   set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+
+  " Allow the cursor to go in to "invalid" places
+  set virtualedit=insert
 " }
 
 " Text Formatting/Layout {
@@ -66,7 +73,7 @@ endfunction
 function PerlTidy()
     let ptline = line('.')
     if filereadable('/usr/bin/perltidy') || filereadable('/opt/local/bin/perltidy')
-        %! perltidy -pbp
+        %! perltidy -pbp -q -nasc -l=100
         "%! perltidy -pbp -nse -nst
     endif
     exe ptline
@@ -81,13 +88,38 @@ function! <SID>SynStack()
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
 
+" UltiSnips Configuration {
+  set runtimepath+=~/.vim/bundle/vim-ultisnips/UltiSnips
+  let g:UltiSnipsExpandTrigger="<c-9>"
+  let g:UltiSnipsJumpForwardTrigger="<c-j>"
+  let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+" }
+
+" Supertab Configuration {
+  let g:SuperTabMappingForward = '<tab>'
+
 " Mappings {
+  let mapleader = ","
   nmap <silent> ;s :call ToggleSyntax()<CR>
+  noremap <silent> ,bd :bd<CR>
   map ,pt :call PerlTidy()<CR>
-  map ,nt :NERDTreeToggle<CR>
+  let NERDTreeShowBookmarks=1
+  map ,n :NERDTreeToggle<CR>
   map ,t  :CommandT<CR>
   imap jj <Esc>
   imap hh =>
   map <C-N> :tabnext<CR>
   map <C-P> :tabprev<CR>
+  cnoremap %% <C-R>=expand('%:h').'/'<CR>
+  map ,ew :e %%
+  map ,es :sp %%
+  map ,ev :vsp %%
+  map ,et :tabe %%
+
+  " Edit the vimrc file
+  nmap <silent> ,ev :e $MYVIMRC<CR>
+  nmap <silent> ,sv :so $MYVIMRC<CR>
+
 " }
+
+" vim:shiftwidth=2:softtabstop=2:tabstop=2
