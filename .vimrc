@@ -13,6 +13,7 @@ set smartindent
   set nocompatible " explicitly get out of vi-compatible mode
   set background=dark " we plan to use a dark background
   syntax on " syntax highlighting on
+  colorscheme solarized
   " Make sure that unsaved buffers that are to be put in the background are
   " allowed to go in there (ie. the "must save first" error doesn't come up)
   set hidden
