@@ -98,6 +98,11 @@ endfunc
 " Supertab Configuration {
   let g:SuperTabMappingForward = '<tab>'
 
+  if version < 702
+    let g:loaded_autoload_l9 = 1
+    let g:disable_l9 = 1
+  endif
+
 " Mappings {
   let mapleader = ","
   nmap <silent> ;s :call ToggleSyntax()<CR>
