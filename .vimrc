@@ -127,8 +127,8 @@ endfunc
   map ,et :tabe %%
 
   " Edit the vimrc file
-  nmap <silent> ,ev :e $MYVIMRC<CR>
-  nmap <silent> ,sv :so $MYVIMRC<CR>
+  nmap <silent> ,er :e $MYVIMRC<CR>
+  nmap <silent> ,sr :so $MYVIMRC<CR>
 
 " }
 
