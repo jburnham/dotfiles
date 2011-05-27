@@ -90,19 +90,23 @@ function! <SID>SynStack()
 endfunc
 
 " UltiSnips Configuration {
-  set runtimepath+=~/.vim/bundle/vim-ultisnips/UltiSnips
-  let g:UltiSnipsExpandTrigger="<c-9>"
-  let g:UltiSnipsJumpForwardTrigger="<c-j>"
-  let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+  set runtimepath+=~/.vim/bundle/ultisnips/UltiSnips
+  let g:UltiSnipsExpandTrigger="<tab>"
+  let g:UltiSnipsJumpForwardTrigger="<tab>"
+  let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " }
 
 " Supertab Configuration {
   let g:SuperTabMappingForward = '<tab>'
+  let g:SuperTabMappingBackward = "<s-tab>"
+" }
 
+" Compatibility {
   if version < 702
     let g:loaded_autoload_l9 = 1
     let g:disable_l9 = 1
   endif
+" }
 
 " Mappings {
   let mapleader = ","
