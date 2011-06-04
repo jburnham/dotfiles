@@ -1,0 +1,16 @@
+[user]
+    name = Justin Burnham
+    email = justin@jburnham.net
+[color]
+    branch = auto
+    ui = true
+    diff = auto
+    interactive = auto
+    status = auto
+[color "diff"]
+    new = cyan
+[core]
+    quotepath = false
+[alias]
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
