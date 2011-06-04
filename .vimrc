@@ -125,6 +125,7 @@ endfunc
   map ,es :sp %%
   map ,ev :vsp %%
   map ,et :tabe %%
+  cmap w!! w !sudo tee % >/dev/null
 
   " Edit the vimrc file
   nmap <silent> ,er :e $MYVIMRC<CR>
