@@ -21,7 +21,7 @@ del_path () {
 
 export PS1='[\u@\h]\w$ '
 
-add_path /usr/local/bin
+pre_path /usr/local/bin
 add_path $HOME/bin
 
 # add this to the .bashrc: . $HOME/.bashrc.load
