@@ -9,6 +9,7 @@ set smartindent
   autocmd FileType perl set errorformat=%f:%l:%m
 " }
 " Basics {
+  set modelines=5
   set nocompatible " explicitly get out of vi-compatible mode
   set background=dark " we plan to use a dark background
   syntax on " syntax highlighting on
