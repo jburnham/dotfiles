@@ -62,6 +62,11 @@ set smartindent
     set tabstop=4 " real tabs should be 4, but they will show with set list on
   " }
 " }
+
+if filereadable('/usr/local/bin/ctags')
+  let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
+endif
+
 function! ToggleSyntax()
     if exists("g:syntax_on")
         syntax off
