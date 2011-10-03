@@ -8,7 +8,7 @@ then
     export EDITOR='mvim -v'
 fi
 
-if [ "$OS" != "Darwin" ]
+if [[ "$TERM" =~ ^(screen) ]]
 then
     look_for_cmd=0
     print_cmd() {
