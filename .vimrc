@@ -20,7 +20,6 @@ set smartindent
 " }
 
 " Vim UI {
-  set cursorcolumn " highlight the current column
   set cursorline " highlight current line
   set incsearch " BUT do highlight as you type you search phrase
   set laststatus=2 " always show the status line
@@ -45,7 +44,7 @@ set smartindent
   set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
   " Allow the cursor to go in to "invalid" places
-  set virtualedit=insert
+  set virtualedit=block
 " }
 
 " Text Formatting/Layout {
@@ -106,6 +105,12 @@ endfunc
   let g:SuperTabMappingBackward = "<s-tab>"
 " }
 
+" FuzzyFinder Configuration {
+  nmap ,f :FufFileWithCurrentBufferDir<CR>
+  nmap ,b :FufBuffer<CR>
+"  nmap ,t :FufTaggedFile<CR>
+" }
+
 " Compatibility {
   if version < 702
     let g:loaded_autoload_l9 = 1
@@ -130,6 +135,10 @@ endfunc
   map ,es :sp %%
   map ,ev :vsp %%
   map ,et :tabe %%
+  nmap <silent> [q :cprev<CR>
+  nmap <silent> ]q :cnext<CR>
+  nmap <silent> [Q :cfirst<CR>
+  nmap <silent> ]Q :clast<CR>
   cmap w!! w !sudo tee % >/dev/null
 
   " Edit the vimrc file
