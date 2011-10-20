@@ -2,7 +2,14 @@
 OS=`uname -s`
 
 if [ "$OS" == "Darwin" ]; then
-    alias ls='ls -G'
+    alias vim='mvim -v'
+    if type gls &>/dev/null ; then
+        alias ls='gls --color=auto -hF'
+    else
+        alias ls='ls -G -hF'
+    fi
+else
+    alias ls='ls --color=auto -hF'
 fi
 
 alias ll='ls -l'
