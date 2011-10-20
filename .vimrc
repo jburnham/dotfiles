@@ -108,7 +108,7 @@ endfunc
 " FuzzyFinder Configuration {
   nmap ,f :FufFileWithCurrentBufferDir<CR>
   nmap ,b :FufBuffer<CR>
-"  nmap ,t :FufTaggedFile<CR>
+  nmap ,t :FufTaggedFile<CR>
 " }
 
 " Compatibility {
@@ -125,7 +125,7 @@ endfunc
   map ,pt :call PerlTidy()<CR>
   let NERDTreeShowBookmarks=1
   map ,n :NERDTreeToggle<CR>
-  map ,t  :CommandT<CR>
+"  map ,t  :CommandT<CR>
   imap jj <Esc>
   imap hh =>
   map <C-N> :tabnext<CR>
