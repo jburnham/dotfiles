@@ -13,6 +13,9 @@ fi
 if [ "$OS" == "Darwin" ]
 then
     export EDITOR='mvim -v'
+    if type gls &>/dev/null ; then
+        alias ls='gls --color=auto -hF'
+    fi
 fi
 
 if [[ "$TERM" =~ ^(screen) ]]
