@@ -19,6 +19,7 @@ del_path () {
     sed -e "s;:$1:;:;g" -e "s;^:;;" -e "s;:\$;;"`
 }
 
+export GIT_PS1_SHOWDIRTYSTATE=1
 if [ -e $HOME/.git-completion.sh ]
 then
     . $HOME/.git-completion.sh
