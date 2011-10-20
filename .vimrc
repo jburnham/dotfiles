@@ -64,6 +64,7 @@ set smartindent
 
 if filereadable('/usr/local/bin/ctags')
   let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
+  let g:autotagCtagsCmd = '/usr/local/bin/ctags'
 endif
 
 function! ToggleSyntax()
@@ -109,6 +110,12 @@ endfunc
   nmap ,f :FufFileWithCurrentBufferDir<CR>
   nmap ,b :FufBuffer<CR>
   nmap ,t :FufTaggedFile<CR>
+" }
+
+" TagList Configuration {
+  let Tlist_GainFocus_On_ToggleOpen = 1
+  let Tlist_Close_On_Select = 1
+  noremap ,tl :TlistToggle<CR>
 " }
 
 " Compatibility {
