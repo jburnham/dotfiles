@@ -12,5 +12,9 @@
 [core]
     quotepath = false
 [alias]
+    st = status
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    ignore = !git update-index --assume-unchanged
+    unignore = !git update-index --no-assume-unchanged
+    ignored = !git ls-files -v | grep ^[a-z]
