@@ -16,6 +16,7 @@ alias ll='ls -l'
 alias la='ls -A'
 alias lla='ls -lA'
 alias l='ls -CF'
+alias g='git'
 
 # clears a key out of the known_hosts file
 function clearkey() {
