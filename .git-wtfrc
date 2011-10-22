@@ -1,0 +1,7 @@
+---
+versions:
+- heads/personal
+ignore:
+- heads/work
+
+max_commits: 5
