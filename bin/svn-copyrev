@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# toss the subcommand
+shift
+
+svn log --stop-on-copy --xml | grep revision | sed 's/.*revision="\([0-9]\+\)">.*/\1/' | tail -n 1
