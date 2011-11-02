@@ -5,7 +5,10 @@
 --regex-puppet=/^node[ \t]*([a-zA-Z0-9_\-]+)[ \t]*/\1/d,definition/
 --regex-puppet=/^define[ \t]*([:a-zA-Z0-9_\-]+)[ \t]*/\1/d,definition/
 
--f tags
+--extra=+f
+--langdef=erb
+--langmap=erb:.erb
+
 --recurse
 --exclude=blib
 --exclude=.svn
