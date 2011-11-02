@@ -1,0 +1,7 @@
+*~
+.DS_Store
+.svn
+tags
+Build
+_build
+blib
