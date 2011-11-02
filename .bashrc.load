@@ -29,7 +29,8 @@ export PS1="\n#--[\u@\h] [\t] [\w]\e[0;31m\$(__git_ps1)\e[m -->\n"
 
 del_path /usr/local/bin
 pre_path /usr/local/bin
-add_path $HOME/bin
+del_path $HOME/bin
+pre_path $HOME/bin
 
 # add this to the .bashrc: . $HOME/.bashrc.load
 
