@@ -32,6 +32,7 @@ pre_path /usr/local/bin
 del_path $HOME/bin
 pre_path $HOME/bin
 add_path $HOME/bin/excluded
+add_path $HOME/bin/git-subtree
 
 # add this to the .bashrc: . $HOME/.bashrc.load
 
