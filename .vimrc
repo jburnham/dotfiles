@@ -123,6 +123,7 @@ endfunc
       \     "/etc/puppet/manifests/",
       \   ],
       \ }
+  let g:fuf_file_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp)$|(^|[/\\])\.(svn|hg|git|bzr)($|[/\\])'
 " }
 
 " TagList Configuration {
