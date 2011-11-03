@@ -110,8 +110,19 @@ endfunc
 
 " FuzzyFinder Configuration {
   nmap ,f :FufFileWithCurrentBufferDir<CR>
+  nmap ,ff :FufFileWithCurrentBufferDir **/<CR>
   nmap ,b :FufBuffer<CR>
   nmap ,t :FufTaggedFile<CR>
+  let g:fuf_modesDisable = [ 'mrucmd', ]
+  let g:fuf_maxMenuWidth = 150
+  let g:fuf_abbrevMap = {
+      \   "^wk:" : [
+      \     "~/wk/",
+      \   ],
+      \   "^puppet:" : [
+      \     "/etc/puppet/manifests/",
+      \   ],
+      \ }
 " }
 
 " TagList Configuration {
