@@ -11,7 +11,7 @@
     new = cyan
 [core]
     quotepath = false
-    excludesfile = /Users/jburnham/.gitignore.global
+    excludesfile = ~/.gitignore.global
 [alias]
     st = status
     ss = status --short
