@@ -38,7 +38,7 @@ set smartindent
   set report=0 " tell us when anything is changed via :...
   set ruler " Always show current positions along the bottom
   set scrolloff=10 " Keep 5 lines (top/bottom) for scope
-  set shortmess=atI " shortens messages to avoid 'press a key' prompt
+  set shortmess=atIoO " shortens messages to avoid 'press a key' prompt
   set showcmd " show the command being typed
   set showmatch " show matching brackets
   set sidescrolloff=10 " Keep 5 lines at the size
