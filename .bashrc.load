@@ -27,6 +27,8 @@ fi
 
 export PS1="\n#--[\u@\h] [\t] [\w]\e[0;31m\$(__git_ps1)\e[m -->\n"
 
+add_path /usr/sbin
+add_path /sbin
 del_path /usr/local/bin
 pre_path /usr/local/bin
 del_path $HOME/bin
