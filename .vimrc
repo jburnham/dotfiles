@@ -78,7 +78,7 @@ function! ToggleSyntax()
 endfunction
 
 " function to perl tidy
-function PerlTidy()
+function! PerlTidy()
     let ptline = line('.')
     if filereadable('/usr/bin/perltidy') || filereadable('/opt/local/bin/perltidy')
         %! perltidy -pbp -q -nasc -l=100
