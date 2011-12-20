@@ -20,10 +20,7 @@ del_path () {
 }
 
 export GIT_PS1_SHOWDIRTYSTATE=1
-if [ -e ~/.bash_completion.d/git_completion ]
-then
-    . ~/.bash_completion.d/git_completion
-fi
+. ~/.bash_completion # loads in all .bash_completion.d scripts
 
 export PS1="\n#--[\u@\h] [\t] [\w]\e[0;31m\$(__git_ps1)\e[m -->\n"
 
@@ -43,4 +40,3 @@ add_path $HOME/bin/remotecopy
 # put any bash customizations in here
 
 . $HOME/.bashrc.d/safe # includes aliases, shell
-. $HOME/.bashrc.d/completion
