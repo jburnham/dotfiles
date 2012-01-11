@@ -1,5 +1,6 @@
 export EDITOR=vim
 export LESS=XR
+export HISTFILESIZE=3000
 
 OS=`uname -s`
 
