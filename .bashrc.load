@@ -20,7 +20,7 @@ del_path () {
 }
 
 export GIT_PS1_SHOWDIRTYSTATE=1
-. ~/.bash_completion # loads in all .bash_completion.d scripts
+. ~/.bash_completion.load # loads in all .bash_completion.d scripts
 
 export PS1="\n#--[\u@\h] [\t] [\w]\e[0;31m\$(__git_ps1)\e[m -->\n"
 
