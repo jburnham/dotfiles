@@ -27,3 +27,10 @@ function clearkey() {
 
 # let's not grep the svn dir
 alias grep='grep --exclude="*.svn*" '
+
+# alias to load resty
+# resty itself will redefine this function
+function resty() {
+    . $HOME/bin/resty/resty
+    resty $*
+}

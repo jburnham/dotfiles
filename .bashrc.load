@@ -33,6 +33,7 @@ pre_path $HOME/bin
 add_path $HOME/bin/excluded
 add_path $HOME/bin/git-subtree
 add_path $HOME/bin/remotecopy
+add_path $HOME/bin/resty
 
 # add this to the .bashrc: . $HOME/.bashrc.load
 
