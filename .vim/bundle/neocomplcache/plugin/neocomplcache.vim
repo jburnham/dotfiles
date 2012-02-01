@@ -26,10 +26,10 @@
 " GetLatestVimScripts: 2620 1 :AutoInstall: neocomplcache
 "=============================================================================
 
-if v:version < 702
-  echoerr 'neocomplcache does not work this version of Vim (' . v:version . ').'
+if exists('g:loaded_neocomplcache')
   finish
-elseif exists('g:loaded_neocomplcache')
+elseif v:version < 702
+  echoerr 'neocomplcache does not work this version of Vim (' . v:version . ').'
   finish
 elseif $SUDO_USER != ''
   echoerr '"sudo vim" is detected. Please use sudo.vim or other plugins instead.'

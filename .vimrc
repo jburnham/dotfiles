@@ -136,6 +136,7 @@ endfunc
   if version < 702
     let g:loaded_autoload_l9 = 1
     let g:disable_l9 = 1
+    let g:loaded_neocomplcache = 1
   endif
 " }
 
