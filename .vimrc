@@ -132,6 +132,27 @@ endfunc
   noremap ,tl :TlistToggle<CR>
 " }
 
+" neocomplcache {
+
+  let g:neocomplcache_enable_auto_select = 1
+  " Disable AutoComplPop.
+  let g:acp_enableAtStartup = 0
+  " Use neocomplcache.
+  let g:neocomplcache_enable_at_startup = 1
+  " Use smartcase.
+  let g:neocomplcache_enable_smart_case = 1
+  " Use camel case completion.
+  let g:neocomplcache_enable_camel_case_completion = 1
+  " Use underbar completion.
+  let g:neocomplcache_enable_underbar_completion = 1
+  " Set minimum syntax keyword length.
+  let g:neocomplcache_min_syntax_length = 3
+
+  " <TAB>: completion.
+  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" }
+
 " Compatibility {
   if version < 702
     let g:loaded_autoload_l9 = 1
