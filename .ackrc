@@ -2,3 +2,5 @@
 puppet=.pp,.erb
 --type-set
 erb=.erb
+--type-set
+config=.conf,.cnf

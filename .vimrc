@@ -80,7 +80,7 @@ endfunction
 " function to perl tidy
 function! PerlTidy()
     let ptline = line('.')
-    if filereadable('/usr/bin/perltidy') || filereadable('/opt/local/bin/perltidy')
+    if filereadable('/usr/bin/perltidy') || filereadable('/opt/local/bin/perltidy') || filereadable(expand("~/perl5/bin/perltidy"))
         %! perltidy -pbp -q -nasc -l=100
         "%! perltidy -pbp -nse -nst
     endif
@@ -149,7 +149,18 @@ endfunc
   let g:neocomplcache_min_syntax_length = 3
 
   " <TAB>: completion.
-  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+  " Enable omni completion.
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+imap  <silent><expr><tab>  neocomplcache#sources#snippets_complete#expandable() ? "\<plug>(neocomplcache_snippets_expand)" : (pumvisible() ? "\<c-e>" : "\<tab>")
+
+smap  <tab>  <right><plug>(neocomplcache_snippets_jump) 
+
+inoremap <expr><c-e>     neocomplcache#complete_common_string()
 
 " }
 

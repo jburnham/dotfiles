@@ -34,6 +34,8 @@ add_path $HOME/bin/excluded
 add_path $HOME/bin/git-subtree
 add_path $HOME/bin/remotecopy
 add_path $HOME/bin/resty
+del_path $HOME/python/bin
+pre_path $HOME/python/bin
 
 # add this to the .bashrc: . $HOME/.bashrc.load
 
