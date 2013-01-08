@@ -1,5 +1,0 @@
-*.sw?
-*.pyc
-tags
-tags-*
-.vim/.netrwhist

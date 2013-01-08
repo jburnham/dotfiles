@@ -3,7 +3,7 @@
 ## Overview
 
 This repo is a skeleton/template/vanilla version of my dotfiles.  It contains a
-utility to help with managing and updating your dotfiles like I manage mine.
+utility ([dfm](https://github.com/justone/dfm)) to help with managing and updating your dotfiles like I manage mine.
 
 ## Using this repo
 
