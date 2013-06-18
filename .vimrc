@@ -189,6 +189,10 @@ inoremap <expr><c-e>     neocomplcache#complete_common_string()
   map ,es :sp %%
   map ,ev :vsp %%
   map ,et :tabe %%
+  map <C-h> <C-w>h
+  map <C-j> <C-w>j
+  map <C-k> <C-w>k
+  map <C-l> <C-w>l
   nmap <silent> [q :cprev<CR>
   nmap <silent> ]q :cnext<CR>
   nmap <silent> [Q :cfirst<CR>
