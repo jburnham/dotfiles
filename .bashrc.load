@@ -23,6 +23,7 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 . ~/.bash_completion.load # loads in all .bash_completion.d scripts
 
 export PS1="\n#--[\u@\h] [\$?] [\t] [\w]\e[0;31m\$(__git_ps1)\e[m -->\n"
+export ANSIBLE_HOSTS=~/ansible_hosts
 
 add_path /usr/sbin
 add_path /sbin
@@ -34,8 +35,6 @@ add_path $HOME/bin/excluded
 add_path $HOME/bin/git-subtree
 add_path $HOME/bin/remotecopy
 add_path $HOME/bin/resty
-del_path $HOME/python/bin
-pre_path $HOME/python/bin
 
 # add this to the .bashrc: . $HOME/.bashrc.load
 

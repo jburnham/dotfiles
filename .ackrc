@@ -4,3 +4,5 @@ puppet=.pp,.erb
 erb=.erb
 --type-set
 config=.conf,.cnf
+--type-set
+yaml=.yml,.yaml

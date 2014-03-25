@@ -24,5 +24,6 @@
     unignore = !git update-index --no-assume-unchanged
     ignored = !git ls-files -v | grep ^[a-z]
     unstage = reset HEAD
+    pom = push origin master
 [github]
     user = jburnham
