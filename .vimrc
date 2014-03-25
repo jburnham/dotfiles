@@ -129,3 +129,8 @@ if strlen($TMUX)
         noremap <Leader>tp :echo "Upgrade tmux to 1.8"<CR>
     endif
 endif
+
+" Keep this at the end for final config overrides
+if filereadable(expand("~/.vimrc.local.after"))
+    source ~/.vimrc.local.after
+endif
