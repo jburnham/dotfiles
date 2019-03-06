@@ -14,9 +14,16 @@ then
     eval `gdircolors $HOME/.dir_colors`
 fi
 # if we're running on a mac, use macvim for commit messages
-if [ "$OS" == "Darwin" ]
+if [ "$OS" == "Darwin" ] && hash vim 2>/dev/null;
 then
-    export EDITOR='mvim -v'
+#    export EDITOR='mvim -v'
+    alias vim='mvim -v'
+fi
+
+# Use Emacs
+if [ "$OS" == "Darwin" ] && hash emacsclient 2>/dev/null;
+then
+    export EDITOR='emacsclient -a "" $*'
 fi
 
 if [[ "$TERM" =~ ^(screen) ]]
