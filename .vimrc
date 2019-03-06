@@ -7,14 +7,14 @@
 
 filetype off
 set nocompatible " explicitly get out of vi-compatible mode
-execute pathogen#incubate()
-execute pathogen#helptags()
+"execute pathogen#incubate()
+"execute pathogen#helptags()
 
 " Basics {
 
-  set background=dark " we plan to use a dark background
+  set background=light " we plan to use a dark background
   syntax on " syntax highlighting on
-  colorscheme solarized
+  " colorscheme solarized
   filetype plugin indent on
   set modelines=5
   " Make sure that unsaved buffers that are to be put in the background are
@@ -50,9 +50,37 @@ execute pathogen#helptags()
   set showmatch " show matching brackets
   set sidescrolloff=10 " Keep 5 lines at the side
   let g:airline_powerline_fonts = 1
+"  let g:airline#extensions#tabline#enabled = 1
+  let g:terraform_align = 1
+  let g:terraform_remap_spacebar=1
+  let g:terraform_fmt_on_save = 1
+"  let g:ctrlp_working_path_mode = 'cr'
 
   " Allow the cursor to go in to "invalid" places
   set virtualedit=block
+" }
+
+" CtrlP
+  " no default input
+  let g:ctrlp_default_input = 0
+  " set working dir starting at vim's working dir
+  let g:ctrlp_working_path_mode = 0
+  let g:ctrlp_mruf_relative = 1
+  let g:ctrlp_match_window = 'top,order:ttb,min:1,max:10,results:100'
+  let g:ctrlp_prompt_mappings = {
+    \ 'ToggleMRURelative()': ['<c-w>'],
+    \ 'PrtDeleteWord()':     ['<F2>']
+    \ }
+  let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/](local|blib|target)$'
+    \ }
+  let g:ctrlp_map = '<leader>ff'
+  noremap <leader>fg :CtrlPRoot<CR>
+  noremap <leader>fr :CtrlPMRU<CR>
+  noremap <leader>fl :CtrlPMRU<CR>
+  noremap <leader>ft :CtrlPTag<CR>
+  noremap <leader>fb :CtrlPBuffer<CR>
+  noremap <leader>fc :CtrlPClearCache<CR>
 " }
 
 " Text Formatting/Layout {
@@ -84,16 +112,14 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+map <C-n> :tabnext<CR>
+map <C-b> :tabprevious<CR>
 cmap w!! w !sudo tee % >/dev/null
 map <F8> :set paste!<CR>
-
-let g:ctrlp_map = '<leader>ff'
-let g:ctrlp_match_window = 'top,order:ttb,min:1,max:10,results:100'
-let g:ctrlp_mruf_relative = 1
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_prompt_mappings = {
-  \ 'ToggleMRURelative()': ['<c-w>'],
-  \ }
+nnoremap <silent> <F12> :bn<CR>
+nnoremap <silent> <S-F12> :bp<CR>
+" (:help smartindent) don't remove indentions on comments
+inoremap # X#
 
 " enable persistent undo
 if v:version >= 703
@@ -107,27 +133,6 @@ if v:version >= 703
   set undofile
   set undolevels=1000
   set undoreload=10000
-endif
-
-" vimux config
-if strlen($TMUX)
-    let tmuxver = system("tmux -V")
-    if matchstr(tmuxver, '1.8')
-        function! InterruptRunnerAndRunLastCommand()
-            :VimuxInterruptRunner
-            :VimuxRunLastCommand
-        endfunction
-
-        noremap <Leader>tp :VimuxPromptCommand<CR>
-        noremap <Leader>tr :VimuxRunLastCommand<CR>
-        noremap <Leader>tt :call InterruptRunnerAndRunLastCommand()<CR>
-        noremap <Leader>ti :VimuxInspectRunner<CR>
-        noremap <Leader>tx :VimuxCloseRunner<CR>
-        noremap <Leader>tc :VimuxInterruptRunner<CR>
-        noremap <Leader>tz :VimuxZoomRunner<CR>
-    else
-        noremap <Leader>tp :echo "Upgrade tmux to 1.8"<CR>
-    endif
 endif
 
 " Keep this at the end for final config overrides
