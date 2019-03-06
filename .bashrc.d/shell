@@ -26,3 +26,30 @@ then
 
     PROMPT_COMMAND="print_host"
 fi
+
+# insipired by https://eli.thegreenplace.net/2013/06/11/keeping-persistent-history-in-bash and Sharif
+log_bash_persistent_history()
+{
+  local last_exit_code=$?   # must be the first command we run in this function
+  [[
+    $(HISTTIMEFORMAT="" history 1) =~ ^\ *([0-9]+)\ +(.*)$
+  ]]
+  local _last_history_number="$$:${BASH_REMATCH[1]}"
+  local _command_part="${BASH_REMATCH[2]}"
+  # Only log if we are not root:
+  if [[ "$(id -u)" -ne 0 ]]; then
+      # only log if last history number changes:
+      if [[ $_last_history_number != $_last_history_number_logged ]]; then
+          _last_history_number_logged=$_last_history_number
+          echo "$(date -u +"%Y-%m-%dT%H:%M:%S")	${HOSTNAME%%.*}[$$:${last_exit_code}]	${PWD/~/\~}	${_command_part}" >> ~/.persistent_history
+      fi
+  fi
+}
+
+# Stuff to do on PROMPT_COMMAND
+run_on_prompt_command()
+{
+    log_bash_persistent_history
+}
+
+PROMPT_COMMAND="run_on_prompt_command"

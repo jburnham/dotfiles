@@ -17,6 +17,7 @@ alias lla='ls -lA'
 alias l='ls -CF'
 alias g='git'
 alias cget='curl -C - -O'
+alias phgrep="cat ~/.persistent_history | grep --color"
 
 # clears a key out of the known_hosts file
 function clearkey() {
