@@ -1,6 +1,8 @@
 export EDITOR=vim
 export LESS=XR
-export HISTFILESIZE=3000
+export HISTFILESIZE=100000
+export HISTCONTROL=ignoreboth
+export HISTTIMEFORMAT="%F %T: "
 
 OS=`uname -s`
 
