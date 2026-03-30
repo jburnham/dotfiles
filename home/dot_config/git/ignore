@@ -1,0 +1,14 @@
+*~
+.DS_Store
+.svn
+tags
+_build
+blib
+*.swp
+*.pyc
+.vscode
+go.work
+go.work.sum
+
+**/.claude/settings.local.json
+**/CLAUDE.local.md

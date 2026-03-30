@@ -1,0 +1,64 @@
+[alias]
+  brd = "!git branch --merged master | awk '!/^[ *]*$/ && !/master/ {print $1}' | xargs echo git branch -d"
+	cf = "commit --fixup"
+	cfc = "!sh -xc \"git commit --fixup=$(git log --pretty=oneline --grep='^[^(fixup!)]' -n 1 | awk '{print $1}')\""
+	co = "checkout"
+	dc = "diff --cached"
+	di = "diff"
+    fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
+    gmru = "git for-each-ref --sort=-committerdate --count=50 refs/heads/ --format='%(HEAD) %(refname:short) | %(committerdate:relative) | %(contents:subject)'| fzf | sed -e 's/^[^[[:alnum:]]]*[[:space:]]*//' | cut -d' ' -f1| xargs -I _ git checkout _"
+	ignore = "!git update-index --assume-unchanged"
+	ignored = "!git ls-files -v | grep ^[a-z]"
+	lol = "log --graph --decorate --pretty=oneline --abbrev-commit"
+	lola = "log --graph --decorate --pretty=oneline --abbrev-commit --all"
+	pob = "!sh -xc \"git push origin $(git rev-parse --abbrev-ref HEAD)\""
+	pobf = "!sh -xc \"git push origin $(git rev-parse --abbrev-ref HEAD) -f\""
+	pom = "push origin master"
+	rb = "for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
+	ru = "remote update origin --prune"
+	ss = "status --short"
+	st = "status"
+	unignore = "!git update-index --no-assume-unchanged"
+	unstage = "reset HEAD"
+	w = "whatchanged"
+
+[bash]
+	showDirtyState = true
+
+[core]
+	pager = "delta"
+	quotepath = false
+
+[diff]
+	noprefix = true
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
+
+[github]
+	user = "jburnham"
+
+[interactive]
+	diffFilter = "delta --color-only"
+
+[rebase]
+	autosquash = true
+
+[remote "origin"]
+	prune = true
+
+[url "ssh://git@github.com/"]
+	insteadOf = "https://github.com/"
+
+[user]
+	name = "Justin Burnham"
+[tag]
+	sort = version:refname
+[push]
+	default = simple
+	autoSetupRemote = true
+[commit]
+	verbose = true
+[include]
+    path = work_config
