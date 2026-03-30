@@ -1,0 +1,9 @@
+packages:
+  darwin:
+    brews:
+    - neovim
+    - jandedobbeleer/oh-my-posh/oh-my-posh
+    - tmux
+    - zoxide
+    - git-delta
+    casks:
