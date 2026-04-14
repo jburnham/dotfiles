@@ -8,3 +8,4 @@ packages:
     - tmux
     - zoxide
     casks:
+    - 1password-cli
