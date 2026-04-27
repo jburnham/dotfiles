@@ -119,7 +119,6 @@ setopt HIST_IGNORE_SPACE
 unsetopt SHARE_HISTORY
 
 path=(
-    "$HOME/.tmuxifier/bin"
     "$HOME/.local/bin"
     "$(go env GOPATH)/bin"
     "$path[@]"
@@ -155,5 +154,4 @@ zstyle ':autocomplete:*' delay 0.1  # seconds (float)
 
 eval "$(brew shellenv)"
 eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/main.toml)"
-#eval "$(tmuxifier init -)"
 eval "$(zoxide init --cmd cd zsh)"
