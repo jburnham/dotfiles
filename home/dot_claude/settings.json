@@ -1,0 +1,71 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bun:*)",
+      "Bash(bunx:*)",
+      "Bash(cargo:*)",
+      "Bash(cat:*)",
+      "Bash(docker:*)",
+      "Bash(find:*)",
+      "Bash(gh:*)",
+      "Bash(git:*)",
+      "Bash(go:*)",
+      "Bash(gradle:*)",
+      "Bash(grep:*)",
+      "Bash(jq:*)",
+      "Bash(kubectl:*)",
+      "Bash(ls:*)",
+      "Bash(make:*)",
+      "Bash(mvn:*)",
+      "Bash(npm:*)",
+      "Bash(npx:*)",
+      "Bash(pip:*)",
+      "Bash(pip3:*)",
+      "Bash(pnpm:*)",
+      "Bash(podman:*)",
+      "Bash(python:*)",
+      "Bash(python3:*)",
+      "Bash(rg:*)",
+      "Bash(rustc:*)",
+      "Bash(swift:*)",
+      "Bash(uv:*)",
+      "Bash(xcrun:*)",
+      "Bash(yarn:*)",
+      "Glob(**)",
+      "Grep(**)",
+      "Read(**)"
+    ],
+    "deny": [
+      "Bash(chmod:*)",
+      "Bash(git commit:*)",
+      "Bash(rm:*)",
+      "Bash(sudo:*)",
+      "Read(**/*.key)",
+      "Read(**/*.pem)",
+      "Read(**/.aws/credentials)",
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(**/.ssh/**)",
+      "Read(**/secrets/**)",
+      "Read(.env)",
+      "Read(.env.*)"
+    ]
+  },
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": true
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/audit-command.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
