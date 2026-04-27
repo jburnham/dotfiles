@@ -1,8 +1,21 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+{{- if eq .chezmoi.username "USERNAME" }}
+  "awsCredentialExport": "$(brew --prefix)/bin/bedrock-credential-CREDTOOL -login",
+  "env": {
+    "aaaANTHROPIC_MODEL": "us.anthropic.claude-opus-4-6-v1",
+    "ANTHROPIC_MODEL": "us.anthropic.claude-opus-4-7",
+    "AWS_REGION": "us-east-1",
+    "CLAUDE_CODE_USE_BEDROCK": "1",
+    "SHELL": "/bin/bash"
+  },
+{{- end }}
   "permissions": {
     "allow": [
+      "Bash(/Applications/GitButler.app/Contents/MacOS/gitbutler-tauri status --json)",
       "Bash(bun:*)",
       "Bash(bunx:*)",
+      "Bash(but status:*)"
       "Bash(cargo:*)",
       "Bash(cat:*)",
       "Bash(docker:*)",
@@ -31,9 +44,7 @@
       "Bash(uv:*)",
       "Bash(xcrun:*)",
       "Bash(yarn:*)",
-      "Glob(**)",
-      "Grep(**)",
-      "Read(**)"
+      "Read"
     ],
     "deny": [
       "Bash(chmod:*)",
@@ -52,6 +63,9 @@
     ]
   },
   "enabledPlugins": {
+{{- if eq .chezmoi.username "USERNAME" }}
+    "gopls-lsp@claude-plugins-official": true,
+{{- end }}
     "superpowers@claude-plugins-official": true
   },
   "hooks": {
@@ -67,5 +81,14 @@
         ]
       }
     ]
+  },
+{{- if eq .chezmoi.username "USERNAME" }}
+  "alwaysThinkingEnabled": true,
+  "effortLevel": "xhigh",
+  "dddmodel": "opus",
+  "model": "us.anthropic.claude-opus-4-7",
+{{- end }}
+  "feedbackSurveyState": {
+    "lastShownTime": 9999999999999
   }
 }
