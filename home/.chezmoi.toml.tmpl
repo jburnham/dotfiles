@@ -1,0 +1,9 @@
+{{- $work := promptBoolOnce . "work_computer" "Is this a work computer" -}}
+
+[data]
+    work_computer = {{ $work }}
+
+[diff]
+    command = "chezmoi-diff"
+    pager = "less"
+    pagerArgs = ["-FRX"]
