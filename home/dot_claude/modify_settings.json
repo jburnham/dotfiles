@@ -1,0 +1,116 @@
+#!/bin/bash
+set -euo pipefail
+
+for cmd in jq chezmoi; do
+  if ! command -v "$cmd" >/dev/null 2>&1; then
+    echo "modify_settings.json: $cmd is required but not found on PATH" >&2
+    exit 1
+  fi
+done
+
+# Per-user signal. Prefer `work_computer` in chezmoi.toml; fall back to the
+# username while that variable is not yet defined.
+is_work=$(chezmoi execute-template '{{- if hasKey . "work_computer" -}}{{ .work_computer }}{{- else -}}{{ eq .chezmoi.username "USERNAME" }}{{- end -}}')
+
+# Normalize stdin: empty, whitespace-only, or `null` become `{}`. Anything
+# else must be a JSON object; arrays/scalars are rejected with a clear error
+# rather than silently corrupting the target.
+existing=$(cat)
+existing=$(printf '%s' "$existing" | jq -c '
+  if . == null then {}
+  elif type == "object" then .
+  else error("settings.json root must be a JSON object, got \(type)")
+  end
+' 2>&1) || { echo "modify_settings.json: $existing" >&2; exit 1; }
+# jq emits nothing on empty/whitespace-only stdin (no JSON value to parse).
+[ -z "$existing" ] && existing='{}'
+
+jq_program='
+    .["$schema"] = "https://json.schemastore.org/claude-code-settings.json"
+  | .permissions.allow = [
+      "Bash(/Applications/GitButler.app/Contents/MacOS/gitbutler-tauri status --json)",
+      "Bash(bun:*)",
+      "Bash(bunx:*)",
+      "Bash(but status:*)",
+      "Bash(cargo:*)",
+      "Bash(cat:*)",
+      "Bash(docker:*)",
+      "Bash(find:*)",
+      "Bash(gh:*)",
+      "Bash(git:*)",
+      "Bash(go:*)",
+      "Bash(gofmt:*)",
+      "Bash(gradle:*)",
+      "Bash(grep:*)",
+      "Bash(jq:*)",
+      "Bash(kubectl:*)",
+      "Bash(ls:*)",
+      "Bash(make:*)",
+      "Bash(mvn:*)",
+      "Bash(npm:*)",
+      "Bash(npx:*)",
+      "Bash(pip:*)",
+      "Bash(pip3:*)",
+      "Bash(pnpm:*)",
+      "Bash(podman:*)",
+      "Bash(python:*)",
+      "Bash(python3:*)",
+      "Bash(rg:*)",
+      "Bash(rustc:*)",
+      "Bash(swift:*)",
+      "Bash(uv:*)",
+      "Bash(xcrun:*)",
+      "Bash(yarn:*)",
+      "Read"
+    ]
+  | .permissions.deny = [
+      "Bash(chmod:*)",
+      "Bash(rm:*)",
+      "Bash(sudo:*)",
+      "Read(**/*.key)",
+      "Read(**/*.pem)",
+      "Read(**/.aws/credentials)",
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(**/.ssh/**)",
+      "Read(**/secrets/**)",
+      "Read(.env)",
+      "Read(.env.*)"
+    ]
+  | .hooks.PreToolUse = [
+      {
+        matcher: "Bash",
+        hooks: [
+          {
+            type: "command",
+            command: "$HOME/.claude/hooks/audit-command.sh",
+            timeout: 10
+          }
+        ]
+      }
+    ]
+  | .statusLine = {
+      type: "command",
+      command: "oh-my-posh claude --config ~/.config/oh-my-posh/claude.omp.json",
+      padding: 0
+    }
+  | .alwaysThinkingEnabled = true
+  | .dddmodel             = "opus"
+  | .enabledPlugins       = { "superpowers@claude-plugins-official": true }
+  | .env                  = { SHELL: "/bin/bash" }
+'
+
+if [ "$is_work" = "true" ]; then
+  jq_program="$jq_program"'
+  | .enabledPlugins      += { "gopls-lsp@claude-plugins-official": true }
+  | .env                 += {
+      aaaANTHROPIC_MODEL: "us.anthropic.claude-opus-4-6-v1",
+      bbbANTHROPIC_MODEL: "us.anthropic.claude-opus-4-7",
+      AWS_REGION: "us-east-1",
+      CLAUDE_CODE_USE_BEDROCK: "1"
+    }
+  | .awsCredentialExport = "$(brew --prefix)/bin/bedrock-credential-CREDTOOL -login"
+'
+fi
+
+printf '%s' "$existing" | jq --sort-keys "$jq_program"
