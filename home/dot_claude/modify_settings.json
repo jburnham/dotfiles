@@ -72,7 +72,6 @@ printf '%s' "$existing" | jq --sort-keys --argjson is_work "$is_work" '
       "Read"
     ]
   | .permissions.deny = [
-      "Bash(chmod:*)",
       "Bash(rm:*)",
       "Bash(sudo:*)",
       "Read(**/*.key)",
