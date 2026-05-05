@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -euo pipefail
 
 for cmd in jq chezmoi; do
@@ -12,8 +12,11 @@ done
 # username while that variable is not yet defined.
 is_work=$(chezmoi execute-template '{{- if hasKey . "work_computer" -}}{{ .work_computer }}{{- else -}}{{ eq .chezmoi.username "USERNAME" }}{{- end -}}')
 case "$is_work" in
-  true|false) ;;
-  *) echo "modify_settings.json: is_work template must return 'true' or 'false', got '$is_work'" >&2; exit 1 ;;
+  true | false) ;;
+  *)
+    echo "modify_settings.json: is_work template must return 'true' or 'false', got '$is_work'" >&2
+    exit 1
+    ;;
 esac
 
 # jq produces silent empty output on empty or whitespace-only stdin (no JSON
@@ -22,7 +25,7 @@ esac
 # Malformed JSON, arrays, and scalars are caught by the normalization stage
 # inside the jq program itself.
 existing=$(cat)
-[ -z "${existing//[[:space:]]/}" ] && existing='{}'
+[[ -z ${existing//[[:space:]]/} ]] && existing='{}'
 
 printf '%s' "$existing" | jq --sort-keys --argjson is_work "$is_work" '
     # Normalize input: null from the shell-side guard becomes {};

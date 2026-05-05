@@ -1,0 +1,59 @@
+pre-commit:
+  parallel: true
+  commands:
+    shellcheck:
+      glob:
+        - "*.sh"
+        - "*.bash"
+        - "**/modify_*"
+        - "**/executable_*"
+      exclude:
+        - "*.tmpl"
+      run: shellcheck {staged_files}
+    shfmt:
+      glob:
+        - "*.sh"
+        - "*.bash"
+        - "**/modify_*"
+        - "**/executable_*"
+      exclude:
+        - "*.tmpl"
+      run: shfmt -i 2 -ci -bn -s -d {staged_files}
+    shellcheck-tmpl:
+      glob:
+        - "*.sh.tmpl"
+        - "*.bash.tmpl"
+      run: |
+        fail=0
+        for f in {staged_files}; do
+          chezmoi execute-template < "$f" | shellcheck - || fail=1
+        done
+        exit $fail
+    shebang:
+      glob:
+        - "*.sh"
+        - "*.bash"
+        - "*.sh.tmpl"
+        - "*.bash.tmpl"
+        - "**/modify_*"
+        - "**/executable_*"
+      run: |
+        fail=0
+        for f in {staged_files}; do
+          shebang=$(head -n1 "$f")
+          if [[ $shebang == "#!/bin/bash" || $shebang == "#!/bin/sh" ]]; then
+            echo "$f: use '#!/usr/bin/env bash' instead of '$shebang'" >&2
+            fail=1
+          fi
+        done
+        exit $fail
+    shfmt-tmpl:
+      glob:
+        - "*.sh.tmpl"
+        - "*.bash.tmpl"
+      run: |
+        fail=0
+        for f in {staged_files}; do
+          chezmoi execute-template < "$f" | shfmt -i 2 -ci -bn -s -d - || fail=1
+        done
+        exit $fail

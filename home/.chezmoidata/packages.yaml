@@ -6,7 +6,10 @@ packages:
     - git-delta
     - jandedobbeleer/oh-my-posh/oh-my-posh
     - lazygit
+    - lefthook
     - neovim
+    - shellcheck
+    - shfmt
     - tmux
     - zoxide
     casks:

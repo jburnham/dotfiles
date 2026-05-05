@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # ~/.claude/hooks/audit-command.sh
 #
 # Fires on PreToolUse for Bash. Logs every command with timestamp and session ID.

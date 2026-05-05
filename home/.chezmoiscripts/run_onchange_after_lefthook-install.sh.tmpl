@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Re-run whenever lefthook.yml changes.
+# lefthook.yml sha256: {{ include (joinPath .chezmoi.workingTree "lefthook.yml") | sha256sum }}
+
+command -v lefthook >/dev/null 2>&1 || {
+  echo "lefthook-install: lefthook not on PATH, skipping" >&2
+  exit 0
+}
+
+cd "{{ .chezmoi.workingTree }}"
+lefthook install
