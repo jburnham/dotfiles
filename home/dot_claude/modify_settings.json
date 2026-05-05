@@ -11,22 +11,27 @@ done
 # Per-user signal. Prefer `work_computer` in chezmoi.toml; fall back to the
 # username while that variable is not yet defined.
 is_work=$(chezmoi execute-template '{{- if hasKey . "work_computer" -}}{{ .work_computer }}{{- else -}}{{ eq .chezmoi.username "USERNAME" }}{{- end -}}')
+case "$is_work" in
+  true|false) ;;
+  *) echo "modify_settings.json: is_work template must return 'true' or 'false', got '$is_work'" >&2; exit 1 ;;
+esac
 
-# Normalize stdin: empty, whitespace-only, or `null` become `{}`. Anything
-# else must be a JSON object; arrays/scalars are rejected with a clear error
-# rather than silently corrupting the target.
+# jq produces silent empty output on empty or whitespace-only stdin (no JSON
+# value to parse), which would then be written to the target file. Guard here
+# so the single jq call below always sees a valid JSON value on stdin.
+# Malformed JSON, arrays, and scalars are caught by the normalization stage
+# inside the jq program itself.
 existing=$(cat)
-existing=$(printf '%s' "$existing" | jq -c '
-  if . == null then {}
-  elif type == "object" then .
-  else error("settings.json root must be a JSON object, got \(type)")
-  end
-' 2>&1) || { echo "modify_settings.json: $existing" >&2; exit 1; }
-# jq emits nothing on empty/whitespace-only stdin (no JSON value to parse).
-[ -z "$existing" ] && existing='{}'
+[ -z "${existing//[[:space:]]/}" ] && existing='{}'
 
-jq_program='
-    .["$schema"] = "https://json.schemastore.org/claude-code-settings.json"
+printf '%s' "$existing" | jq --sort-keys --argjson is_work "$is_work" '
+    # Normalize input: null from the shell-side guard becomes {};
+    # objects pass through; arrays/scalars are rejected loudly.
+    (if . == null then {}
+     elif type == "object" then .
+     else error("settings.json root must be a JSON object, got \(type)")
+     end)
+  | .["$schema"] = "https://json.schemastore.org/claude-code-settings.json"
   | .permissions.allow = [
       "Bash(/Applications/GitButler.app/Contents/MacOS/gitbutler-tauri status --json)",
       "Bash(bun:*)",
@@ -98,19 +103,14 @@ jq_program='
   | .dddmodel             = "opus"
   | .enabledPlugins       = { "superpowers@claude-plugins-official": true }
   | .env                  = { SHELL: "/bin/bash" }
+  | if $is_work then
+        .enabledPlugins      += { "gopls-lsp@claude-plugins-official": true }
+      | .env                 += {
+          aaaANTHROPIC_MODEL: "us.anthropic.claude-opus-4-6-v1",
+          bbbANTHROPIC_MODEL: "us.anthropic.claude-opus-4-7",
+          AWS_REGION: "us-east-1",
+          CLAUDE_CODE_USE_BEDROCK: "1"
+        }
+      | .awsCredentialExport = "$(brew --prefix)/bin/bedrock-credential-CREDTOOL -login"
+    else . end
 '
-
-if [ "$is_work" = "true" ]; then
-  jq_program="$jq_program"'
-  | .enabledPlugins      += { "gopls-lsp@claude-plugins-official": true }
-  | .env                 += {
-      aaaANTHROPIC_MODEL: "us.anthropic.claude-opus-4-6-v1",
-      bbbANTHROPIC_MODEL: "us.anthropic.claude-opus-4-7",
-      AWS_REGION: "us-east-1",
-      CLAUDE_CODE_USE_BEDROCK: "1"
-    }
-  | .awsCredentialExport = "$(brew --prefix)/bin/bedrock-credential-CREDTOOL -login"
-'
-fi
-
-printf '%s' "$existing" | jq --sort-keys "$jq_program"
