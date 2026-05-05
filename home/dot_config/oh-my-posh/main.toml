@@ -2,14 +2,21 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
 version = 3
 final_space = true
 
+[palette]
+  blue = 'blue'
+  magenta = 'magenta'
+  red = 'red'
+  white = 'white'
+  yellow = 'yellow'
+
 [secondary_prompt]
   template = '❯❯ '
-  foreground = 'magenta'
+  foreground = 'p:magenta'
   background = 'transparent'
 
 [transient_prompt]
-  template = '{{ .Segments.Time.CurrentDate | date .Segments.Time.Format }} {{if gt .Code 0 }}<red>❯</>{{else}}<magenta>❯</>{{end}} '
-  foreground = 'yellow'
+  template = '{{ if .Segments.Time }}{{ .Segments.Time.CurrentDate | date .Segments.Time.Format }}{{ else }}{{ now | date "15:04:05" }}{{ end }} {{ if gt .Code 0 }}<p:red>❯</>{{ else }}<p:magenta>❯</>{{ end }} '
+  foreground = 'p:yellow'
   background = 'transparent'
   newline = true
 
@@ -20,10 +27,9 @@ final_space = true
 
   [[blocks.segments]]
     template = '{{ .Path }}'
-    foreground = 'blue'
+    foreground = 'p:blue'
     background = 'transparent'
     type = 'path'
-    style = 'plain'
 
     [blocks.segments.properties]
       cache_duration = 'none'
@@ -31,7 +37,8 @@ final_space = true
 
   [[blocks.segments]]
     template = ' on {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }} '
-    foreground = 'magenta'
+    foreground = 'p:magenta'
+    background = 'transparent'
     type = 'git'
 
     [blocks.segments.properties]
@@ -40,11 +47,10 @@ final_space = true
       fetch_status = true
 
   [[blocks.segments]]
-    template = '<white>took</> {{ .FormattedMs }}'
-    foreground = 'yellow'
+    template = '<p:white>took</> {{ .FormattedMs }}'
+    foreground = 'p:yellow'
     background = 'transparent'
     type = 'executiontime'
-    style = 'plain'
 
     [blocks.segments.properties]
       cache_duration = 'none'
@@ -57,9 +63,8 @@ final_space = true
 
   [[blocks.segments]]
     template = '{{ .CurrentDate | date .Format }} '
-    foreground = 'yellow'
+    foreground = 'p:yellow'
     type = 'time'
-    style = 'plain'
 
     [blocks.segments.properties]
       cache_duration = 'none'
@@ -69,8 +74,7 @@ final_space = true
     template = '❯'
     background = 'transparent'
     type = 'text'
-    style = 'plain'
-    foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}magenta{{end}}']
+    foreground_templates = ['{{if gt .Code 0}}p:red{{end}}', '{{if eq .Code 0}}p:magenta{{end}}']
 
     [blocks.segments.properties]
       cache_duration = 'none'

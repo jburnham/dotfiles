@@ -11,3 +11,6 @@ packages:
     - zoxide
     casks:
     - 1password-cli
+    - font-fira-code
+    - font-jetbrains-mono-nerd-font
+    - font-meslo-lg-nerd-font
