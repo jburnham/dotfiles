@@ -63,12 +63,9 @@
       "Read(.env.*)"
     ]
   },
-  "enabledPlugins": {
 {{- if eq .chezmoi.username "USERNAME" }}
-    "gopls-lsp@claude-plugins-official": true,
+  "model": "us.anthropic.claude-opus-4-7",
 {{- end }}
-    "superpowers@claude-plugins-official": true
-  },
   "hooks": {
     "PreToolUse": [
       {
@@ -83,11 +80,21 @@
       }
     ]
   },
+  "statusLine": {
+    "type": "command",
+    "command": "oh-my-posh claude --config ~/.config/oh-my-posh/claude.omp.json",
+    "padding": 0
+  },
+  "enabledPlugins": {
+{{- if eq .chezmoi.username "USERNAME" }}
+    "gopls-lsp@claude-plugins-official": true,
+{{- end }}
+    "superpowers@claude-plugins-official": true
+  },
 {{- if eq .chezmoi.username "USERNAME" }}
   "alwaysThinkingEnabled": true,
   "effortLevel": "xhigh",
   "dddmodel": "opus",
-  "model": "us.anthropic.claude-opus-4-7",
 {{- end }}
   "feedbackSurveyState": {
     "lastShownTime": 9999999999999
