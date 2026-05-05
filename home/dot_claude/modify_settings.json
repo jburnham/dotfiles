@@ -104,7 +104,18 @@ printf '%s' "$existing" | jq --sort-keys --argjson is_work "$is_work" '
     }
   | .alwaysThinkingEnabled = true
   | .dddmodel             = "opus"
-  | .enabledPlugins       = { "superpowers@claude-plugins-official": true }
+  | .enabledPlugins       = {
+      "superpowers@claude-plugins-official": true,
+      "memsearch@memsearch-plugins": true
+    }
+  | .extraKnownMarketplaces = {
+      "memsearch-plugins": {
+        source: {
+          source: "github",
+          repo: "zilliztech/memsearch"
+        }
+      }
+    }
   | .env                  = { SHELL: "/bin/bash" }
   | if $is_work then
         .enabledPlugins      += { "gopls-lsp@claude-plugins-official": true }
