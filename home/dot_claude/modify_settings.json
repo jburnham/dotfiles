@@ -104,26 +104,41 @@ printf '%s' "$existing" | jq --sort-keys --argjson is_work "$is_work" '
   | .alwaysThinkingEnabled = true
   | .dddmodel             = "opus"
   | .enabledPlugins       = {
-      "superpowers@claude-plugins-official": true,
-      "memsearch@memsearch-plugins": true
+      "superpowers@claude-plugins-official": true
     }
-  | .extraKnownMarketplaces = {
-      "memsearch-plugins": {
-        source: {
-          source: "github",
-          repo: "zilliztech/memsearch"
-        }
-      }
-    }
-  | .env                  = { SHELL: "/bin/bash" }
+  | .env                       = { SHELL: "/bin/bash" }
+  | .extraKnownMarketplaces    = {}
   | if $is_work then
-        .enabledPlugins      += { "gopls-lsp@claude-plugins-official": true }
-      | .env                 += {
+        .enabledPlugins         += {
+          "gopls-lsp@claude-plugins-official": true,
+          "memsearch@memsearch-plugins": true
+        }
+      | .extraKnownMarketplaces += {
+          "memsearch-plugins": {
+            source: {
+              source: "github",
+              repo: "zilliztech/memsearch"
+            }
+          }
+        }
+      | .env                    += {
           aaaANTHROPIC_MODEL: "us.anthropic.claude-opus-4-6-v1",
           bbbANTHROPIC_MODEL: "us.anthropic.claude-opus-4-7",
           AWS_REGION: "us-east-1",
           CLAUDE_CODE_USE_BEDROCK: "1"
         }
-      | .awsCredentialExport = "$(brew --prefix)/bin/bedrock-credential-CREDTOOL -login"
-    else . end
+      | .awsCredentialExport     = "$(brew --prefix)/bin/bedrock-credential-CREDTOOL -login"
+    else
+        .enabledPlugins         += {
+          "codex@openai-codex": true
+        }
+      | .extraKnownMarketplaces += {
+          "openai-codex": {
+            source: {
+              source: "github",
+              repo: "openai/codex-plugin-cc"
+            }
+          }
+        }
+    end
 '
