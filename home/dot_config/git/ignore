@@ -1,6 +1,8 @@
 *~
 .DS_Store
+.memsearch
 .svn
+docs/superpowers
 tags
 _build
 blib
@@ -9,6 +11,7 @@ blib
 .vscode
 go.work
 go.work.sum
+pr-description.md
 
 **/.claude/settings.local.json
 **/CLAUDE.local.md
