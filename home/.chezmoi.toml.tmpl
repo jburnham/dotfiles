@@ -4,6 +4,12 @@
     work_computer = {{ $work }}
 
 [diff]
-    command = "chezmoi-diff"
-    pager = "less"
-    pagerArgs = ["-FRX"]
+    pager = "delta"
+[[textconv]]
+    pattern = "**/.claude/settings.json"
+    command = "jq"
+    args = ["--sort-keys", "."]
+[[textconv]]
+    pattern = "**/.claude/settings.local.json"
+    command = "jq"
+    args = ["--sort-keys", "."]
