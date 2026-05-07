@@ -1,3 +1,10 @@
 alias cm='chezmoi'
 alias cm-edit-packages='vim ~/.local/share/chezmoi/home/.chezmoidata/packages.yaml'
 alias timeout='gtimeout'
+
+alias ls='eza --icons=always --no-permissions --octal-permissions --group --git --group-directories-first --time-style "+%Y-%m-%d %H:%M"'
+alias la='ls -a'
+alias ll='ls -l'
+alias lla='ls -la'
+alias l='ls -la'
+alias tree='ls -T'

@@ -2,6 +2,7 @@ packages:
   darwin:
     brews:
     - coreutils
+    - eza
     - gh
     - git-delta
     - jandedobbeleer/oh-my-posh/oh-my-posh
