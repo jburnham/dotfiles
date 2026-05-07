@@ -1,0 +1,5 @@
+{
+  "file_types": {
+    "Shell Script": ["dot_zprofile", "dot_zshrc"],
+  },
+}
