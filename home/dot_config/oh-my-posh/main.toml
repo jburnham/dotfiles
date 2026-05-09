@@ -36,15 +36,16 @@ final_space = true
       style = 'full'
 
   [[blocks.segments]]
-    template = ' on {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }} '
+    template = ' on  {{if .UpstreamURL}}{{ url (printf "<u>%s</u>" .HEAD) .UpstreamURL }}{{else}}{{ .HEAD }}{{end}}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }} '
     foreground = 'p:magenta'
     background = 'transparent'
     type = 'git'
 
     [blocks.segments.properties]
-      branch_icon = ' '
+      branch_icon = ''
       cache_duration = 'none'
       fetch_status = true
+      fetch_upstream_icon = true
 
   [[blocks.segments]]
     template = '<p:white>took</> {{ .FormattedMs }}'
