@@ -4,7 +4,8 @@
     "blue": "blue",
     "magenta": "magenta",
     "white": "white",
-    "yellow": "yellow"
+    "yellow": "yellow",
+    "red": "red"
   },
   "accent_color": "32",
   "blocks": [
@@ -40,17 +41,25 @@
           "background": "transparent",
           "type": "claude",
           "style": "plain"
-        }
-      ]
-    },
-    {
-      "type": "prompt",
-      "alignment": "left",
-      "newline": true,
-      "segments": [
+        },
         {
-          "template": "{{if .RateLimits}}5h:{{ .FiveHourUsage }}% 7d:{{ .SevenDayUsage }}%{{end}}",
+          "template": "{{if .RateLimits}} 󰎰 {{ .FiveHourGauge }}{{end}}",
           "foreground": "accent",
+          "foreground_templates": [
+            "{{if gt .FiveHourUsage 89}}p:red{{end}}",
+            "{{if gt .FiveHourUsage 79}}p:yellow{{end}}"
+          ],
+          "background": "transparent",
+          "type": "claude",
+          "style": "plain"
+        },
+        {
+          "template": "{{if .RateLimits}}{{if gt .SevenDayUsage 74}} 󰎸 {{ .SevenDayGauge }}{{end}}{{end}}",
+          "foreground": "accent",
+          "foreground_templates": [
+            "{{if gt .SevenDayUsage 89}}p:red{{end}}",
+            "{{if gt .SevenDayUsage 79}}p:yellow{{end}}"
+          ],
           "background": "transparent",
           "type": "claude",
           "style": "plain"
