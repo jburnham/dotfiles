@@ -11,14 +11,19 @@
   overwriting, so app-managed fields like `model`, `effortLevel`, `$schema` are
   preserved. Keys the script *does* set are authoritative.
 
+## Editing managed files
+- Always edit source files under `home/` (e.g. `home/dot_config/`) rather than
+  deployed files under `~/` — live files get overwritten on the next
+  `chezmoi apply`.
+- If it's unclear whether a file is managed, run `chezmoi source-path <path>`
+  to confirm before editing.
+- Before running `chezmoi apply`, always show `chezmoi diff` and get confirmation.
+
 ## Diff
-- `home/dot_local/bin/executable_chezmoi-diff` is the configured
-  `diff.command`. It sort-keys `.claude/settings.json` via jq before diffing so
-  Claude Code's key-order churn doesn't show up. Labels use `~/...` for
-  copy-pasteable paths.
-- Bootstrap caveat: on a brand-new machine, `chezmoi diff` errors until the
-  first `chezmoi apply` installs the wrapper. This is accepted — don't try to
-  work around it.
+- `chezmoi diff` uses `delta` as the pager (configured in `.chezmoi.toml.tmpl`).
+- `textconv` rules pipe `.claude/settings.json` and `.claude/settings.local.json`
+  through `jq --sort-keys` before diffing so Claude Code's key-order churn
+  doesn't show up as noise.
 
 ## Lefthook / linting
 - `lefthook.yml` runs shellcheck + shfmt on `*.sh`, `*.bash`, and
