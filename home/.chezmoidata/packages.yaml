@@ -3,6 +3,7 @@ packages:
     brews:
     - coreutils
     - eza
+    - fzf
     - gh
     - git-delta
     - jandedobbeleer/oh-my-posh/oh-my-posh
