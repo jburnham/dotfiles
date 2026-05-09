@@ -27,14 +27,14 @@
             "branch_icon": " ",
             "fetch_status": true
           },
-          "template": " on {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }} ",
+          "template": " on {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}",
           "foreground": "p:magenta",
           "background": "transparent",
           "type": "git",
           "style": "plain"
         },
         {
-          "template": "󰯉 {{ .Model.DisplayName }}  {{ .TokenUsagePercent.GaugeUsed }}",
+          "template": " 󰯉 {{ .Model.DisplayName }}  {{ .TokenUsagePercent.GaugeUsed }}",
           "foreground": "accent",
           "background": "transparent",
           "type": "claude",
