@@ -41,6 +41,20 @@
           "style": "plain"
         }
       ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "template": "{{if .RateLimits}}5h:{{ .FiveHourUsage }}% 7d:{{ .SevenDayUsage }}%{{end}}",
+          "foreground": "accent",
+          "background": "transparent",
+          "type": "claude",
+          "style": "plain"
+        }
+      ]
     }
   ],
   "version": 4
