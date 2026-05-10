@@ -10,6 +10,12 @@ setopt hist_verify              # show command with history expansion to user be
 setopt inc_append_history_time  # append command to history file immediately after execution
 unsetopt share_history          # do not share history between multiple zsh sessions
 
+path=(
+    "$HOME/.local/bin"
+    "$(go env GOPATH)/bin"
+    "$path[@]"
+)
+
 export DO_NOT_TRACK=true
 export EDITOR=nvim
 export GH_TELEMETRY=false
