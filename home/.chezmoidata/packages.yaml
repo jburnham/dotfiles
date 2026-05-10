@@ -1,23 +1,25 @@
 packages:
   darwin:
     brews:
-    - coreutils
-    - eza
-    - fzf
-    - gh
-    - git-delta
-    - jandedobbeleer/oh-my-posh/oh-my-posh
-    - lazygit
-    - lefthook
-    - neovim
-    - shellcheck
-    - shfmt
-    - tmux
-    - zoxide
+      - bat
+      - coreutils
+      - eza
+      - fzf
+      - gh
+      - git-delta
+      - jandedobbeleer/oh-my-posh/oh-my-posh
+      - jless
+      - lazygit
+      - lefthook
+      - neovim
+      - shellcheck
+      - shfmt
+      - tmux
+      - zoxide
     casks:
-    - 1password-cli
-    - clearance
-    - font-fira-code
-    - font-jetbrains-mono-nerd-font
-    - font-meslo-lg-nerd-font
-    - qlmarkdown
+      - 1password-cli
+      - clearance
+      - font-fira-code
+      - font-jetbrains-mono-nerd-font
+      - font-meslo-lg-nerd-font
+      - qlmarkdown
