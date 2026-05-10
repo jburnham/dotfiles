@@ -35,6 +35,10 @@ printf '%s' "$existing" | jq --sort-keys --argjson is_work "$is_work" '
      else error("settings.json root must be a JSON object, got \(type)")
      end)
   | .["$schema"] = "https://json.schemastore.org/claude-code-settings.json"
+  | .attribution = {
+      commit: "",
+      pr: ""
+  }
   | .permissions.allow = [
       "Bash(/Applications/GitButler.app/Contents/MacOS/gitbutler-tauri status --json)",
       "Bash(bun:*)",
