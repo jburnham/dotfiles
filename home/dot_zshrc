@@ -1,3 +1,13 @@
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# If ZSH is not defined, use the current script's directory.
+[[ -n "$ZSH" ]] || export ZSH="${${(%):-%x}:a:h}"
+
+source ~/.config/zsh/plugins/zshrc.d/zshrcd.zsh
+
+# old config lives below, keep it around for reference until we have everything migrated to the new config
+return
 #zmodload zsh/zprof
 
 # If you come from bash you might have to change your $PATH.

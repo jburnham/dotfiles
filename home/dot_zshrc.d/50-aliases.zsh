@@ -8,3 +8,7 @@ alias ll='ls -l'
 alias lla='ls -la'
 alias l='ls -la'
 alias tree='ls -T'
+
+# Interactively checkout a recent branch via fuzzy finder (fzf).
+# Lists 50 most recently committed branches with date and last commit msg.
+alias gmru="git for-each-ref --sort=-committerdate --count=50 refs/heads/ --format='%(HEAD) %(refname:short) | %(committerdate:relative) | %(contents:subject)'| fzf | sed -e 's/^[^[:alnum:]]*//' | cut -d' ' -f1| xargs -I _ git checkout _"

@@ -1,3 +1,36 @@
+[".config/zsh/plugins/zshrc.d"]
+    checksum.sha512 = "03637a66a09b5fd7acfd3719e7b376fdd078ff4d0c7832f24fe459b8031f0edaa1b1bcaec843ea0271aa6578ca3c2ba2e789162f8d5ddd25fa0986d6521d06e4"
+    exact = true
+    refreshPeriod = "168h"
+    stripComponents = 1
+    type = "archive"
+    url = "https://github.com/mattmc3/zshrc.d/archive/09fe190718cff2d7cb08ce30794a7938316ca976.tar.gz"
+
+[".config/zsh/plugins/zsh-autocomplete"]
+    checksum.sha512 = "9645a437de5006d5faadbe470a66d0d0f993af8aeba77a0daf56041ae27005610a373dc9b700ce3c1b1f544c2672d9b88563678be43d589e7ff6ea7d680e17af"
+    exact = true
+    refreshPeriod = "168h"
+    stripComponents = 1
+    type = "archive"
+    url = "https://github.com/marlonrichert/zsh-autocomplete/archive/a3e4b595e799a21eb61b3cd0809fa143c104e336.tar.gz"
+
+[".config/zsh/plugins/zsh-autosuggestions"]
+    checksum.sha512 = "de82526299902ef4c6ba248a627a9d7654751dfc0a5417c188300549607e99f8769f70bc1422ad05879c7116b26034a4d864ca1e34afb7e3357a524d033eb048"
+    exact = true
+    refreshPeriod = "168h"
+    stripComponents = 1
+    type = "archive"
+    url = "https://github.com/zsh-users/zsh-autosuggestions/archive/85919cd1ffa7d2d5412f6d3fe437ebdbeeec4fc5.tar.gz"
+
+[".config/zsh/plugins/zsh-syntax-highlighting"]
+    checksum.sha512 = "a78477a2118bb5114e8c2856654caaa034daf110237426c25e5103736ee02fb03ec148315b4d58a399549cd1705de4b7ac7ff4cbf65b3dbd3b460dab14ab710d"
+    exact = true
+    refreshPeriod = "168h"
+    stripComponents = 1
+    type = "archive"
+    url = "https://github.com/zsh-users/zsh-syntax-highlighting/archive/1d85c692615a25fe2293bdd44b34c217d5d2bf04.tar.gz"
+
+# old
 [".oh-my-zsh"]
     type = "archive"
     url = "https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz"
