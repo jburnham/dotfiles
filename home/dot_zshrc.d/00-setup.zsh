@@ -1,3 +1,5 @@
+bindkey -e  # emacs line editing: ^A/^E, ^R, ^W, etc.
+
 ## History command configuration
 export HISTFILE=~/.zsh_history
 export HISTSIZE=999999999       # the number of items for the internal history list
