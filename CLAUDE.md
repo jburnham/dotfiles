@@ -1,5 +1,7 @@
 # Chezmoi dotfiles
 
+In this repo, the user refers to `chezmoi` as `cm` (e.g. "run cm diff", "cm apply"). Treat `cm` as a synonym for `chezmoi` in conversation; the actual shell command is still `chezmoi` unless a `cm` alias/shim exists on PATH.
+
 ## Layout
 - `.chezmoiroot` points source state at `home/`. All managed paths live under
   `home/` (e.g. `home/dot_claude/`, `home/dot_local/bin/`).
