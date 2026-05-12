@@ -85,11 +85,29 @@ fi
 # Resolve TMPDIR (macOS sets this to a per-user path like /var/folders/xx/...)
 RESOLVED_TMPDIR="$(cd "${TMPDIR:-/tmp}" && pwd -P)"
 
+# Resolve XDG base dirs (fall back to spec defaults when unset).
+# Resolve symlinks when the dir exists so sandbox rules match realpath.
+resolve_dir() {
+  if [[ -d $1 ]]; then
+    (cd "$1" && pwd -P)
+  else
+    echo "$1"
+  fi
+}
+XDG_CONFIG="$(resolve_dir "${XDG_CONFIG_HOME:-${RESOLVED_HOME}/.config}")"
+XDG_DATA="$(resolve_dir "${XDG_DATA_HOME:-${RESOLVED_HOME}/.local/share}")"
+XDG_CACHE="$(resolve_dir "${XDG_CACHE_HOME:-${RESOLVED_HOME}/.cache}")"
+XDG_STATE="$(resolve_dir "${XDG_STATE_HOME:-${RESOLVED_HOME}/.local/state}")"
+
 SANDBOX_ARGS=(
   sandbox-exec -f "$PROFILE"
   -D "_HOME=${RESOLVED_HOME}"
   -D "_PROJECT_DIR=${PROJECT_DIR}"
   -D "_TMPDIR=${RESOLVED_TMPDIR}"
+  -D "_XDG_CONFIG_HOME=${XDG_CONFIG}"
+  -D "_XDG_DATA_HOME=${XDG_DATA}"
+  -D "_XDG_CACHE_HOME=${XDG_CACHE}"
+  -D "_XDG_STATE_HOME=${XDG_STATE}"
 )
 
 if [[ $CLEAN_ENV == true ]]; then
@@ -109,10 +127,13 @@ if [[ $CLEAN_ENV == true ]]; then
   # Passthrough editor preferences
   [[ -n ${EDITOR:-} ]] && ENV_ARGS+=("EDITOR=${EDITOR}")
   [[ -n ${VISUAL:-} ]] && ENV_ARGS+=("VISUAL=${VISUAL}")
-  # Passthrough XDG dirs (tools rely on these)
-  [[ -n ${XDG_CONFIG_HOME:-} ]] && ENV_ARGS+=("XDG_CONFIG_HOME=${XDG_CONFIG_HOME}")
-  [[ -n ${XDG_DATA_HOME:-} ]] && ENV_ARGS+=("XDG_DATA_HOME=${XDG_DATA_HOME}")
-  [[ -n ${XDG_CACHE_HOME:-} ]] && ENV_ARGS+=("XDG_CACHE_HOME=${XDG_CACHE_HOME}")
+  # Passthrough XDG dirs (resolved above so the profile and the env agree)
+  ENV_ARGS+=(
+    "XDG_CONFIG_HOME=${XDG_CONFIG}"
+    "XDG_DATA_HOME=${XDG_DATA}"
+    "XDG_CACHE_HOME=${XDG_CACHE}"
+    "XDG_STATE_HOME=${XDG_STATE}"
+  )
   [[ -n ${XDG_RUNTIME_DIR:-} ]] && ENV_ARGS+=("XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR}")
   # Passthrough *_BASE_URL vars (for future proxy support)
   # env(1) failing is not a realistic concern
