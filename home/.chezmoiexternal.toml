@@ -10,6 +10,24 @@
     url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/engineering/zoom-out/SKILL.md"
     refreshPeriod = "168h"
 
+[".claude/skills/prototype/SKILL.md"]
+    checksum.sha512 = "263e87d4df4a9eeb67df408ae9565825e76c79a88ce2c8e23d2010cfba22f50723628785117accd307e74db8f7198f39cb7d81cd1ad760cc0960ebbc07539fcd"
+    type = "file"
+    url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/engineering/prototype/SKILL.md"
+    refreshPeriod = "168h"
+
+[".claude/skills/prototype/LOGIC.md"]
+    checksum.sha512 = "97eaaf1553f32dff9f549cdb5a50d150d77e6a1b28be2ff26ef5c5233a2d3912e757987026a0e47c5910b354711d40c6cac8464158ee9266770a41ee1d072f40"
+    type = "file"
+    url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/engineering/prototype/LOGIC.md"
+    refreshPeriod = "168h"
+
+[".claude/skills/prototype/UI.md"]
+    checksum.sha512 = "0771e79b8c93d463229119bd54ff4b0072391f9c50d4d876e5db3c0543438ad938693b345e790ad645a35dd177c8d4356b0f9a1c6ecd5c9d4496d4b9fe560acd"
+    type = "file"
+    url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/engineering/prototype/UI.md"
+    refreshPeriod = "168h"
+
 [".config/zsh/plugins/zshrc.d"]
     checksum.sha512 = "03637a66a09b5fd7acfd3719e7b376fdd078ff4d0c7832f24fe459b8031f0edaa1b1bcaec843ea0271aa6578ca3c2ba2e789162f8d5ddd25fa0986d6521d06e4"
     exact = true
