@@ -4,6 +4,12 @@
     url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/productivity/handoff/SKILL.md"
     refreshPeriod = "168h"
 
+[".claude/skills/zoom-out/SKILL.md"]
+    checksum.sha512 = "c94889f64d07b1614a995781f9745c6f9511f4fc0f31ddaf43463ebddf4b48ceaf39e8135c4a07488b8a96a3274ac18e1871a6418d578f1c5ab72d8096025971"
+    type = "file"
+    url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/engineering/zoom-out/SKILL.md"
+    refreshPeriod = "168h"
+
 [".config/zsh/plugins/zshrc.d"]
     checksum.sha512 = "03637a66a09b5fd7acfd3719e7b376fdd078ff4d0c7832f24fe459b8031f0edaa1b1bcaec843ea0271aa6578ca3c2ba2e789162f8d5ddd25fa0986d6521d06e4"
     exact = true
