@@ -1,3 +1,9 @@
+[".claude/skills/handoff/SKILL.md"]
+    checksum.sha512 = "8001259875613f5b9049ade7cc630f7d4bad19c25df19ecbb4e83a194f997d7bea85e4a5c02360624f26dcf5e773dde37078d2f7009fea80d395316b2c8c4a6e"
+    type = "file"
+    url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/productivity/handoff/SKILL.md"
+    refreshPeriod = "168h"
+
 [".config/zsh/plugins/zshrc.d"]
     checksum.sha512 = "03637a66a09b5fd7acfd3719e7b376fdd078ff4d0c7832f24fe459b8031f0edaa1b1bcaec843ea0271aa6578ca3c2ba2e789162f8d5ddd25fa0986d6521d06e4"
     exact = true
