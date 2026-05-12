@@ -108,6 +108,7 @@ printf '%s' "$existing" | jq --sort-keys --argjson is_work "$is_work" '
       padding: 0
     }
   | .alwaysThinkingEnabled = true
+  | .skipDangerousModePermissionPrompt = true
   | .dddmodel             = "opus"
   | .enabledPlugins       = {
       "superpowers@claude-plugins-official": true
