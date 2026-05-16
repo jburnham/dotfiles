@@ -1,12 +1,12 @@
 [alias]
-  brd = "!git branch --merged master | awk '!/^[ *]*$/ && !/master/ {print $1}' | xargs echo git branch -d"
+	brd = "!git branch --merged master | awk '!/^[ *]*$/ && !/master/ {print $1}' | xargs echo git branch -d"
 	cf = "commit --fixup"
 	cfc = "!sh -xc \"git commit --fixup=$(git log --pretty=oneline --grep='^[^(fixup!)]' -n 1 | awk '{print $1}')\""
 	co = "checkout"
 	dc = "diff --cached"
 	di = "diff"
-  fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
-  gmru = "git for-each-ref --sort=-committerdate --count=50 refs/heads/ --format='%(HEAD) %(refname:short) | %(committerdate:relative) | %(contents:subject)'| fzf | sed -e 's/^[^[[:alnum:]]]*[[:space:]]*//' | cut -d' ' -f1| xargs -I _ git checkout _"
+	fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
+	gmru = "git for-each-ref --sort=-committerdate --count=50 refs/heads/ --format='%(HEAD) %(refname:short) | %(committerdate:relative) | %(contents:subject)'| fzf | sed -e 's/^[^[[:alnum:]]]*[[:space:]]*//' | cut -d' ' -f1| xargs -I _ git checkout _"
 	ignore = "!git update-index --assume-unchanged"
 	ignored = "!git ls-files -v | grep ^[a-z]"
 	lol = "log --graph --decorate --pretty=oneline --abbrev-commit"
@@ -25,6 +25,15 @@
 [bash]
 	showDirtyState = true
 
+[branch]
+	sort = -committerdate
+
+[column]
+	ui = auto
+
+[commit]
+	verbose = true
+
 [core]
 	pager = "delta"
 	quotepath = false
@@ -36,6 +45,11 @@
 	mnemonicPrefix = true
 	renames = true
 
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+
 [github]
 	user = "jburnham"
 
@@ -44,9 +58,15 @@
 
 [rebase]
 	autosquash = true
+	autoStash = true
+	updateRefs = true
 
 [remote "origin"]
 	prune = true
+
+[rerere]
+	enabled = true
+	autoupdate = true
 
 [url "ssh://git@github.com/"]
 	insteadOf = "https://github.com/"
@@ -61,8 +81,7 @@
 [commit]
 	verbose = true
 [include]
-  path = work_config
-
+	path = work_config
 [hook "git-trim-notice"]
 	event = post-merge
 	command = "~/.config/git/hooks/git-trim-notice"

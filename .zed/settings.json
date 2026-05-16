@@ -8,4 +8,9 @@
       "**/dot_claude/modify_settings.json",
     ],
   },
+  "languages": {
+    "Git Config": {
+      "hard_tabs": true,
+    },
+  },
 }
