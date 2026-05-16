@@ -19,6 +19,7 @@ packages:
     casks:
       - 1password-cli
       - clearance
+      - font-0xproto-nerd-font
       - font-fira-code
       - font-jetbrains-mono-nerd-font
       - font-meslo-lg-nerd-font
