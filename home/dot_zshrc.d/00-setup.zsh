@@ -32,3 +32,4 @@ source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 eval "$(brew shellenv)"
 eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/main.toml)"
 eval "$(zoxide init --cmd cd zsh)"
+eval "$(mise activate zsh)"
