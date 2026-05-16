@@ -5,8 +5,8 @@
 	co = "checkout"
 	dc = "diff --cached"
 	di = "diff"
-    fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
-    gmru = "git for-each-ref --sort=-committerdate --count=50 refs/heads/ --format='%(HEAD) %(refname:short) | %(committerdate:relative) | %(contents:subject)'| fzf | sed -e 's/^[^[[:alnum:]]]*[[:space:]]*//' | cut -d' ' -f1| xargs -I _ git checkout _"
+  fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
+  gmru = "git for-each-ref --sort=-committerdate --count=50 refs/heads/ --format='%(HEAD) %(refname:short) | %(committerdate:relative) | %(contents:subject)'| fzf | sed -e 's/^[^[[:alnum:]]]*[[:space:]]*//' | cut -d' ' -f1| xargs -I _ git checkout _"
 	ignore = "!git update-index --assume-unchanged"
 	ignored = "!git ls-files -v | grep ^[a-z]"
 	lol = "log --graph --decorate --pretty=oneline --abbrev-commit"
@@ -61,4 +61,4 @@
 [commit]
 	verbose = true
 [include]
-    path = work_config
+  path = work_config
