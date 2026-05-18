@@ -59,3 +59,10 @@
     stripComponents = 1
     type = "archive"
     url = "https://github.com/zsh-users/zsh-syntax-highlighting/archive/1d85c692615a25fe2293bdd44b34c217d5d2bf04.tar.gz"
+
+[".local/bin/git-trim"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/jasonmccreary/git-trim/b45f2d85ba3ddd8257534623871b4ca8518ee3dc/git-trim"
+    checksum.sha512 = "5b03f1dc7f2c3c95b1271916201e8063a2b1ea380a07cb9400c5ce10dde522e6873bfce0acbe11b7d4a1ce3577cd8c9f209dca593e45e02c75c46e8d0f003674"
+    executable = true
+    refreshPeriod = "168h"
