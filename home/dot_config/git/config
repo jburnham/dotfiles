@@ -62,3 +62,10 @@
 	verbose = true
 [include]
   path = work_config
+
+[hook "git-trim-notice"]
+	event = post-merge
+	command = "~/.config/git/hooks/git-trim-notice"
+
+[gt]
+	exclude = "gitbutler/*"

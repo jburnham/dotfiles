@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Notify when squash-merged local branches can be cleaned up.
+# Wired up via [hook "git-trim-notice"] in ~/.config/git/config (Git 2.54+).
+
+set -u
+
+command -v git-trim >/dev/null 2>&1 || exit 0
+
+count=$(git trim --dry-run --squashed 2>/dev/null | grep -c 'will be deleted' || true)
+[[ $count -gt 0 ]] || exit 0
+
+# shellcheck disable=SC2016 # backticks here are markdown literals, not command substitution
+if [[ -t 2 ]]; then
+  printf '\033[33m[git-trim] %d squash-merged branch(es) can be cleaned up: run `git trim-tidy`\033[0m\n' "$count" >&2
+else
+  printf '[git-trim] %d squash-merged branch(es) can be cleaned up: run `git trim-tidy`\n' "$count" >&2
+fi

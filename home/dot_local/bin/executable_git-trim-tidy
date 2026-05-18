@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+# Wrapper around `git trim --squashed` that surfaces worktree-removal hints
+# for branches that are blocked from deletion because they're checked out
+# in another worktree. Works in dry-run mode too.
+
+set -u
+
+dry_run=0
+for arg in "$@"; do
+  [[ $arg == --dry-run ]] && dry_run=1
+done
+
+output=$(git trim --squashed "$@" 2>&1)
+status=$?
+printf '%s\n' "$output"
+
+worktrees=()
+if [[ $dry_run -eq 1 ]]; then
+  # Build "branch|path" map from `git worktree list --porcelain`, then look up
+  # each would-delete branch.
+  mapping=$({ git worktree list --porcelain || true; } | awk '
+    /^worktree / {p=substr($0, 10); next}
+    /^branch refs\/heads\// {print substr($0, 19) "|" p}
+  ')
+  while IFS= read -r branch; do
+    [[ -n $branch ]] || continue
+    path=$(printf '%s\n' "$mapping" | awk -F'|' -v b="$branch" '$1==b {print $2; exit}')
+    [[ -n $path ]] && worktrees+=("$path")
+  done < <(printf '%s\n' "$output" | sed -nE 's/^([^ ]+) will be deleted\.$/\1/p' || true)
+else
+  while IFS= read -r path; do
+    [[ -n $path ]] && worktrees+=("$path")
+  done < <(printf '%s\n' "$output" | sed -nE "s/^error: cannot delete branch '[^']+' used by worktree at '([^']+)'\$/\\1/p" || true)
+fi
+
+[[ ${#worktrees[@]} -gt 0 ]] || exit "$status"
+
+printf '\n'
+if [[ $dry_run -eq 1 ]]; then
+  msg=$(printf '[git trim] %d branch(es) would be blocked by worktrees. To unblock, you would need to run:' "${#worktrees[@]}")
+else
+  msg=$(printf '[git trim] %d branch(es) blocked by worktrees. To unblock, run:' "${#worktrees[@]}")
+fi
+if [[ -t 1 ]]; then
+  printf '\033[33m%s\033[0m\n' "$msg"
+else
+  printf '%s\n' "$msg"
+fi
+for path in "${worktrees[@]}"; do
+  printf '  git worktree remove %q\n' "$path"
+done
+printf '  git trim --squashed\n'
