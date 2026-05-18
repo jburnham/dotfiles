@@ -68,21 +68,9 @@
 (deny file-read* (subpath (string-append (param "_HOME") "/.docker")))
 (deny file-read* (subpath (string-append (param "_HOME") "/.kube")))
 
-;; -- Version control tokens (Reasonable Access) --
-;; Allow reading gh settings but deny authentication hosts.
-;; Mirrored for both default path and XDG_CONFIG_HOME override.
-(deny file-read*
-  (require-all
-    (subpath (string-append (param "_HOME") "/.config/gh"))
-    (require-not (literal (string-append (param "_HOME") "/.config/gh/config.yml")))
-  ))
-(deny file-read* (literal (string-append (param "_HOME") "/.config/gh/hosts.yml")))
-(deny file-read*
-  (require-all
-    (subpath (string-append (param "_XDG_CONFIG_HOME") "/gh"))
-    (require-not (literal (string-append (param "_XDG_CONFIG_HOME") "/gh/config.yml")))
-  ))
-(deny file-read* (literal (string-append (param "_XDG_CONFIG_HOME") "/gh/hosts.yml")))
+;; -- Version control tokens --
+;; gh stores OAuth tokens in macOS Keychain (secure-storage), not hosts.yml.
+;; ~/.config/gh/{config,hosts}.yml hold only preferences and account pointers.
 
 ;; -- Package manager tokens --
 (deny file-read* (literal (string-append (param "_HOME") "/.pypirc")))
