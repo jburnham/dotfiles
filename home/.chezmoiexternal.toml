@@ -1,5 +1,5 @@
 [".claude/skills/handoff/SKILL.md"]
-    checksum.sha512 = "8001259875613f5b9049ade7cc630f7d4bad19c25df19ecbb4e83a194f997d7bea85e4a5c02360624f26dcf5e773dde37078d2f7009fea80d395316b2c8c4a6e"
+    checksum.sha512 = "8e7bca9d1783526423f0a89860edae174bee7bf4a9ec006fa9a4e9e3003d46ca0033b9208cf4c47cf527118c02f0ea8c98b7ee4732f60f3f3818107e96eca1fe"
     type = "file"
     url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/productivity/handoff/SKILL.md"
     refreshPeriod = "168h"
