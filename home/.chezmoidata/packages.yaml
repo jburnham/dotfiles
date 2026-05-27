@@ -3,6 +3,7 @@ packages:
     brews:
       - bat
       - coreutils
+      - eugene1g/safehouse/agent-safehouse
       - eza
       - fzf
       - gh
