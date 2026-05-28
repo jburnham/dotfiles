@@ -36,7 +36,7 @@
           "style": "plain"
         },
         {
-          "template": " 󰯉 {{ .Model.DisplayName }}  {{ .TokenUsagePercent.GaugeUsed }}",
+          "template": " 󰯉 {{ .Model.DisplayName }}  {{ .TokenUsagePercent.GaugeUsed }} {{ div .ContextWindow.CurrentUsage.InputTokens 1000 }}/{{ div .ContextWindow.ContextWindowSize 1000 }}K",
           "foreground": "accent",
           "background": "transparent",
           "type": "claude",
