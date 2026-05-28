@@ -1,5 +1,5 @@
 ;; Allow oh-my-posh to manage its cache dir even when it doesn't exist yet.
 ;; Using a profile snippet (vs. SAFEHOUSE_ADD_DIRS) avoids safehouse's
 ;; path-existence check on --add-dirs for not-yet-created paths.
-(allow file-write*
-  (home-subpath "/Library/Caches/oh-my-posh"))
+(allow file-read* file-write*
+  (home-subpath "/.cache/oh-my-posh"))

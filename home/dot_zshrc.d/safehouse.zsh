@@ -1,5 +1,5 @@
-export SAFEHOUSE_ADD_DIRS_RO=~/.config/oh-my-posh:~/.cloudflared
-export SAFEHOUSE_ADD_DIRS=~/.memsearch
+export SAFEHOUSE_ADD_DIRS_RO=~/.config/oh-my-posh:~/.cloudflared:~/.local/bin:~/.cache/huggingface
+export SAFEHOUSE_ADD_DIRS=~/.memsearch:~/.aws-sso:~/.local/state/CREDTOOL
 safe() {
     local resolved_home project_dir git_root
     resolved_home="$(cd "$HOME" && pwd -P)"
@@ -21,6 +21,7 @@ safe() {
 
     safehouse \
         --workdir="$project_dir" \
+        --enable=cloud-credentials,keychain,process-control \
         "${append_profile_args[@]}" \
         "$@"
 }

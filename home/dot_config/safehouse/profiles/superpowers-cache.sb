@@ -1,0 +1,6 @@
+;; Allow the superpowers browser skill to manage its session cache.
+;; Path: ~/Library/Caches/superpowers/{browser,browser-profiles}/...
+;; Safehouse's base policy intentionally omits broad ~/Library/Caches writes,
+;; so each tool's cache subtree is opted in via its own profile snippet.
+(allow file-read* file-write*
+  (home-subpath "/Library/Caches/superpowers"))

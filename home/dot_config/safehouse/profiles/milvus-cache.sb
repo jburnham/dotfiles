@@ -1,0 +1,5 @@
+;; Allow milvus (embedded, used by memsearch) to manage its cache dir.
+;; Safehouse's base policy intentionally omits broad ~/.cache writes,
+;; so each tool's cache subtree is opted in via its own profile snippet.
+(allow file-read* file-write*
+  (home-subpath "/.cache/milvus"))
