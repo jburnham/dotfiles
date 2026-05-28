@@ -2,7 +2,6 @@
 .DS_Store
 .memsearch
 .svn
-docs/superpowers
 tags
 _build
 blib
@@ -15,3 +14,4 @@ pr-description.md
 
 **/.claude/settings.local.json
 **/CLAUDE.local.md
+**/.claude/worktrees/
