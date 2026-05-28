@@ -110,10 +110,18 @@ printf '%s' "$existing" | jq --sort-keys --argjson is_work "$is_work" '
   | .skipDangerousModePermissionPrompt = true
   | .dddmodel             = "opus"
   | .enabledPlugins       = {
-      "superpowers@claude-plugins-official": true
+      "superpowers@claude-plugins-official": true,
+      "superpowers-chrome@superpowers-marketplace": true
     }
   | .env                       = { SHELL: "/bin/bash" }
-  | .extraKnownMarketplaces    = {}
+  | .extraKnownMarketplaces    = {
+      "superpowers-marketplace": {
+        source: {
+          source: "github",
+          repo: "obra/superpowers-marketplace"
+        }
+      }
+    }
   | if $is_work then
         .enabledPlugins         += {
           "gopls-lsp@claude-plugins-official": true,
