@@ -36,7 +36,7 @@
           "style": "plain"
         },
         {
-          "template": " 󰯉 {{ .Model.DisplayName }}  {{ .TokenUsagePercent.GaugeUsed }} {{ div .ContextWindow.CurrentUsage.InputTokens 1000 }}/{{ div .ContextWindow.ContextWindowSize 1000 }}K",
+          "template": " 󰯉 {{ .Model.DisplayName }}  {{ .TokenUsagePercent.GaugeUsed }} {{ if .ContextWindow.CurrentUsage }}{{ div (add .ContextWindow.CurrentUsage.InputTokens .ContextWindow.CurrentUsage.CacheCreationInputTokens .ContextWindow.CurrentUsage.CacheReadInputTokens) 1000 }}{{ else }}0{{ end }}/{{ div .ContextWindow.ContextWindowSize 1000 }}K",
           "foreground": "accent",
           "background": "transparent",
           "type": "claude",
