@@ -1,6 +1,7 @@
 packages:
   darwin:
     brews:
+      - anomalyco/tap/opencode
       - bat
       - coreutils
       - eugene1g/safehouse/agent-safehouse
