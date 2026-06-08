@@ -1,0 +1,6 @@
+;; Allow mcp-remote (used by MCP servers over remote transport) to read and
+;; refresh its stored OAuth tokens. Path: ~/.mcp-auth/mcp-remote-<version>/...
+;; Without this, safehouse denies file-read-metadata on ~/.mcp-auth and the
+;; OAuth flow fails inside the sandbox (e.g. under safe-opencode).
+(allow file-read* file-write*
+  (home-subpath "/.mcp-auth"))
