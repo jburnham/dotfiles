@@ -28,6 +28,36 @@
     url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/engineering/prototype/UI.md"
     refreshPeriod = "168h"
 
+[".claude/skills/teach/SKILL.md"]
+    checksum.sha512 = "9107b24cbe1efd588c3b620a5db1b5557693a154137497b72891a293deef3b23c67fddee52a538a6420801a2ebb90368fb4564555a0578fea5d60840d8eabd4e"
+    type = "file"
+    url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/productivity/teach/SKILL.md"
+    refreshPeriod = "168h"
+
+[".claude/skills/teach/MISSION-FORMAT.md"]
+    checksum.sha512 = "92dd91e89dff1cbcc5f16b4cf905d9e8f714ed8342d7bfbcb118695fbc14e6ac26216ee493bc851f4bcb0ae6b31a8d1495d45e83919e44091faf581aa8a9fff8"
+    type = "file"
+    url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/productivity/teach/MISSION-FORMAT.md"
+    refreshPeriod = "168h"
+
+[".claude/skills/teach/RESOURCES-FORMAT.md"]
+    checksum.sha512 = "75d1f2605f4117a718a14081867a5fe44a90de12f49213f43b5aafc30ee0e3bef97bb5cf46806a2aee52e1120a1a5d5d296a8f17dee6d65ca783d46803dd66a6"
+    type = "file"
+    url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/productivity/teach/RESOURCES-FORMAT.md"
+    refreshPeriod = "168h"
+
+[".claude/skills/teach/LEARNING-RECORD-FORMAT.md"]
+    checksum.sha512 = "4d2b0b04af247313ec3a441c07ebcdaa6314b8124795ca2591594f0ea607584f05e3336664e8e2f16dbcc8a5c3009c34add6c2a32fcffeb9e9d041baae448eda"
+    type = "file"
+    url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/productivity/teach/LEARNING-RECORD-FORMAT.md"
+    refreshPeriod = "168h"
+
+[".claude/skills/teach/GLOSSARY-FORMAT.md"]
+    checksum.sha512 = "276cf0c2b249b39a381041ee1388d657113ff10ccd076354f81e12ec2bb5707758e91c53f8f110c67e6117a378476d93a398254d896447d704898d54da87697a"
+    type = "file"
+    url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/productivity/teach/GLOSSARY-FORMAT.md"
+    refreshPeriod = "168h"
+
 [".config/zsh/plugins/zshrc.d"]
     checksum.sha512 = "03637a66a09b5fd7acfd3719e7b376fdd078ff4d0c7832f24fe459b8031f0edaa1b1bcaec843ea0271aa6578ca3c2ba2e789162f8d5ddd25fa0986d6521d06e4"
     exact = true
