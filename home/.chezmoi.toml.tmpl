@@ -1,7 +1,12 @@
 {{- $work := promptBoolOnce . "work_computer" "Is this a work computer" -}}
+{{- $credTool := "" -}}
+{{- if $work -}}
+{{-   $credTool = promptStringOnce . "cred_tool" "Credential helper name (bare tool word)" -}}
+{{- end -}}
 
 [data]
     work_computer = {{ $work }}
+    cred_tool = {{ $credTool | quote }}
 
 [diff]
     pager = "delta"

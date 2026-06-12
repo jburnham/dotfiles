@@ -8,9 +8,8 @@ for cmd in jq chezmoi; do
   fi
 done
 
-# Per-user signal. Prefer `work_computer` in chezmoi.toml; fall back to the
-# username while that variable is not yet defined.
-is_work=$(chezmoi execute-template '{{- if hasKey . "work_computer" -}}{{ .work_computer }}{{- else -}}{{ eq .chezmoi.username "USERNAME" }}{{- end -}}')
+# Per-user signal sourced from chezmoi data (`work_computer` in chezmoi.toml).
+is_work=$(chezmoi execute-template '{{ .work_computer }}')
 case "$is_work" in
   true | false) ;;
   *)
@@ -18,6 +17,11 @@ case "$is_work" in
     exit 1
     ;;
 esac
+
+# Credential helper name (bare tool word), sourced from chezmoi data
+# (`cred_tool`). Empty on non-work machines; only used inside the $is_work
+# branch below, so an empty value is harmless.
+cred_tool=$(chezmoi execute-template '{{ .cred_tool }}')
 
 # jq produces silent empty output on empty or whitespace-only stdin (no JSON
 # value to parse), which would then be written to the target file. Guard here
@@ -27,7 +31,7 @@ esac
 existing=$(cat)
 [[ -z ${existing//[[:space:]]/} ]] && existing='{}'
 
-printf '%s' "$existing" | jq --sort-keys --argjson is_work "$is_work" '
+printf '%s' "$existing" | jq --sort-keys --argjson is_work "$is_work" --arg cred_tool "$cred_tool" '
     # Normalize input: null from the shell-side guard becomes {};
     # objects pass through; arrays/scalars are rejected loudly.
     (if . == null then {}
@@ -142,7 +146,7 @@ printf '%s' "$existing" | jq --sort-keys --argjson is_work "$is_work" '
           AWS_REGION: "us-east-1",
           CLAUDE_CODE_USE_BEDROCK: "1"
         }
-      | .awsCredentialExport     = "$(brew --prefix)/bin/bedrock-credential-CREDTOOL -login"
+      | .awsCredentialExport     = "$(brew --prefix)/bin/bedrock-credential-\($cred_tool) -login"
     else
         .enabledPlugins         += {
           "codex@openai-codex": true

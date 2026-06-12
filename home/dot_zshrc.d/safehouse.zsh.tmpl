@@ -1,5 +1,30 @@
-export SAFEHOUSE_ADD_DIRS_RO=~/.config/oh-my-posh:~/.cloudflared:~/.local/bin:~/.cache/huggingface
-export SAFEHOUSE_ADD_DIRS=~/.memsearch:~/.aws-sso:~/.local/state/CREDTOOL:~/.cdk:~/.claude
+# Build a colon-separated dir list from candidates, keeping only those that
+# exist. Avoids safehouse erroring out on dirs that are absent on this machine
+# (e.g. ~/.aws-sso on a personal laptop).
+_safehouse_existing_dirs() {
+    local dir
+    local -a found
+    for dir in "$@"; do
+        [[ -d $dir ]] && found+=("$dir")
+    done
+    local IFS=:
+    print -r -- "${found[*]}"
+}
+
+export SAFEHOUSE_ADD_DIRS_RO="$(_safehouse_existing_dirs \
+    "$HOME/.config/oh-my-posh" \
+    "$HOME/.cloudflared" \
+    "$HOME/.local/bin" \
+    "$HOME/.cache/huggingface")"
+
+export SAFEHOUSE_ADD_DIRS="$(_safehouse_existing_dirs \
+    "$HOME/.memsearch" \
+    "$HOME/.aws-sso" \
+{{- if .cred_tool }}
+    "$HOME/.local/state/{{ .cred_tool }}" \
+{{- end }}
+    "$HOME/.cdk" \
+    "$HOME/.claude")"
 safe() {
     local resolved_home project_dir git_root
     resolved_home="$(cd "$HOME" && pwd -P)"
