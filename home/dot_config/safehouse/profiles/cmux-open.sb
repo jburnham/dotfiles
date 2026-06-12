@@ -1,0 +1,6 @@
+;; Allow the sandbox to read and execute cmux's bundled helper binaries
+;; (notably .../bin/open). process-exec is already allowed globally by
+;; safehouse, but loading/exec'ing a binary still requires file-read* on its
+;; path, and /Applications is not in safehouse's default read allowlist.
+(allow file-read*
+  (subpath "/Applications/cmux.app/Contents/Resources/bin"))
