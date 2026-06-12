@@ -1,3 +1,19 @@
+[include]
+{{- if .work_computer }}
+	path = config-work.inc
+{{- range (splitList "," .work_orgs) }}
+{{- $org := trim . }}
+{{- if $org }}
+[includeIf "hasconfig:remote.*.url:*:{{ $org }}/**"]
+	path = config-work.inc
+{{- end }}
+{{- end }}
+{{- else }}
+	path = config-personal.inc
+{{- end }}
+[includeIf "hasconfig:remote.*.url:*:jburnham/**"]
+	path = config-personal.inc
+
 [alias]
 	brd = "!git branch --merged master | awk '!/^[ *]*$/ && !/master/ {print $1}' | xargs echo git branch -d"
 	cf = "commit --fixup"
@@ -71,17 +87,11 @@
 [url "ssh://git@github.com/"]
 	insteadOf = "https://github.com/"
 
-[user]
-	name = "Justin Burnham"
 [tag]
 	sort = version:refname
 [push]
 	default = simple
 	autoSetupRemote = true
-[commit]
-	verbose = true
-[include]
-	path = work_config
 [hook "git-trim-notice"]
 	event = post-merge
 	command = "~/.config/git/hooks/git-trim-notice"
