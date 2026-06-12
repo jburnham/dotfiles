@@ -15,4 +15,4 @@ pr-description.md
 **/.claude/settings.local.json
 **/CLAUDE.local.md
 **/.claude/worktrees/
-**/.worktrees/
+.worktrees
