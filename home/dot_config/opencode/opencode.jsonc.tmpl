@@ -1,0 +1,46 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "permission": {
+    "external_directory": {
+      "/tmp/**": "allow",
+      "~/go/**": "allow"
+    }
+  },
+  "plugin": [
+    "superpowers@git+https://github.com/obra/superpowers.git"{{ if .work_computer }},
+    "@zilliz/memsearch-opencode"{{ end }}
+  ]{{ if .work_computer }},
+  "model": "amazon-bedrock/us.anthropic.claude-opus-4-8",
+  "agent": {
+    "explore": {
+      "model": "amazon-bedrock/us.anthropic.claude-sonnet-4-6"
+    },
+    "general": {
+      "model": "amazon-bedrock/us.anthropic.claude-sonnet-4-6"
+    }
+  },
+  "provider": {
+    "amazon-bedrock": {
+      "options": {
+        "region": "us-east-1",
+        "profile": "bedrock-{{ .cred_tool }}"
+      }
+    }
+  },
+  "mcp": {
+    "linear": {
+      "type": "remote",
+      "url": "https://mcp.linear.app/mcp",
+      "enabled": true
+    },
+    "platform-tools": {
+      "type": "local",
+      "command": [
+        "npx", "-y", "mcp-remote@latest",
+        "https://{{ .work_mcp_host }}/api/mcp/devtools",
+        "--resource", "https://{{ .work_mcp_host }}/api/mcp/devtools"
+      ],
+      "enabled": true
+    }
+  }{{ end }}
+}

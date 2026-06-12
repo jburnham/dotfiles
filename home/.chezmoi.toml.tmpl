@@ -1,12 +1,15 @@
 {{- $work := promptBoolOnce . "work_computer" "Is this a work computer" -}}
 {{- $credTool := "" -}}
+{{- $mcpHost := "" -}}
 {{- if $work -}}
 {{-   $credTool = promptStringOnce . "cred_tool" "Credential helper name (bare tool word)" -}}
+{{-   $mcpHost = promptStringOnce . "work_mcp_host" "Work MCP host (e.g. mcp.example.com)" -}}
 {{- end -}}
 
 [data]
     work_computer = {{ $work }}
     cred_tool = {{ $credTool | quote }}
+    work_mcp_host = {{ $mcpHost | quote }}
 
 [diff]
     pager = "delta"
