@@ -13,6 +13,8 @@
 {{- end }}
 [includeIf "hasconfig:remote.*.url:*:jburnham/**"]
 	path = config-personal.inc
+[includeIf "gitdir:~/.local/share/chezmoi/"]
+	path = config-personal.inc
 
 [alias]
 	brd = "!git branch --merged master | awk '!/^[ *]*$/ && !/master/ {print $1}' | xargs echo git branch -d"
