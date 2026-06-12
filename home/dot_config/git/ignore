@@ -11,6 +11,7 @@ blib
 go.work
 go.work.sum
 pr-description.md
+lefthook-local.yml
 
 **/.claude/settings.local.json
 **/CLAUDE.local.md

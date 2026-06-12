@@ -21,6 +21,9 @@ In this repo, the user refers to `chezmoi` as `cm` (e.g. "run cm diff", "cm appl
   to confirm before editing.
 - Before running `chezmoi apply`, always show `chezmoi diff` and get confirmation.
 
+## Internal names (this repo is public)
+- Never commit internal/company names as literals — use chezmoi data variables instead (a gitignored `lefthook-local.yml` scans staged files and blocks the commit).
+
 ## Diff
 - `chezmoi diff` uses `delta` as the pager (configured in `.chezmoi.toml.tmpl`).
 - `textconv` rules pipe `.claude/settings.json` and `.claude/settings.local.json`
