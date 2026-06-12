@@ -1,0 +1,21 @@
+# Example local-only lefthook overrides.
+#
+# Copy this to `lefthook-local.yml` (which is gitignored) and replace the
+# placeholder terms with the real internal/work names that must never appear
+# in this public repo. The real file is never committed.
+#
+# See: https://lefthook.dev/examples/lefthook-local/
+pre-commit:
+  commands:
+    no-internal-names:
+      # Case-insensitive scan of staged files for internal/work names that must
+      # not appear in this public repo. Add terms to the alternation below.
+      run: |
+        terms='internal-name-one|internal-name-two'
+        if matches=$(grep -HIniE "$terms" {staged_files} 2>/dev/null); then
+          echo "internal name(s) found in staged files — not corrected:" >&2
+          echo "$matches" >&2
+          echo "Use a chezmoi data variable instead (see CLAUDE.md)." >&2
+          exit 1
+        fi
+        exit 0
