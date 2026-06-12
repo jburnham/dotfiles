@@ -29,7 +29,7 @@
     refreshPeriod = "168h"
 
 [".claude/skills/teach/SKILL.md"]
-    checksum.sha512 = "9107b24cbe1efd588c3b620a5db1b5557693a154137497b72891a293deef3b23c67fddee52a538a6420801a2ebb90368fb4564555a0578fea5d60840d8eabd4e"
+    checksum.sha512 = "970d456b4f44b128851fbd794fa9c1f27e005f08ba97ef9128592a148c1b17d737e5624e4ecd636941571dc79cd8e44ac60963dc0a8a3318c8e71f61f23a3ec1"
     type = "file"
     url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/productivity/teach/SKILL.md"
     refreshPeriod = "168h"
