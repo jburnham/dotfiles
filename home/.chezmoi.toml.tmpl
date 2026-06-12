@@ -3,6 +3,7 @@
 {{- $mcpHost := "" -}}
 {{- $workEmail := "" -}}
 {{- $workOrgs := "" -}}
+{{- $privateTerms := promptStringOnce . "private_terms" "Private terms to block from commits, comma-separated" -}}
 {{- if $work -}}
 {{-   $credTool = promptStringOnce . "cred_tool" "Credential helper name (bare tool word)" -}}
 {{-   $mcpHost = promptStringOnce . "work_mcp_host" "Work MCP host (e.g. mcp.example.com)" -}}
@@ -16,6 +17,7 @@
     work_mcp_host = {{ $mcpHost | quote }}
     work_email = {{ $workEmail | quote }}
     work_orgs = {{ $workOrgs | quote }}
+    private_terms = {{ $privateTerms | quote }}
 
 [diff]
     pager = "delta"

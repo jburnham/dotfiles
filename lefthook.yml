@@ -47,6 +47,34 @@ pre-commit:
           fi
         done
         exit $fail
+    no-private-terms:
+      run: |
+        patterns=$(mktemp)
+        trap 'rm -f "$patterns"' EXIT
+
+        chezmoi_args=()
+        [[ -z ${CHEZMOI_CONFIG:-} ]] || chezmoi_args+=(--config "$CHEZMOI_CONFIG")
+
+        terms=$(chezmoi "${chezmoi_args[@]}" data --format=json | jq -r '.private_terms // ""')
+        [[ -n $terms ]] || exit 0
+
+        printf '%s\n' "$terms" \
+          | tr ',' '\n' \
+          | sed 's/^[[:space:]]*//; s/[[:space:]]*$//' \
+          | grep -v '^$' >"$patterns"
+
+        [[ -s $patterns ]] || exit 0
+
+        fail=0
+        for f in {staged_files}; do
+          if matches=$(grep -HIniF -f "$patterns" "$f" 2>/dev/null); then
+            echo "private term(s) found in staged files - not corrected:" >&2
+            echo "$matches" >&2
+            echo "Use a chezmoi data variable instead (see CLAUDE.md)." >&2
+            fail=1
+          fi
+        done
+        exit $fail
     shfmt-tmpl:
       glob:
         - "*.sh.tmpl"
