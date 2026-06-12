@@ -1,5 +1,3 @@
-alias sbc='sb -c claude --dangerously-skip-permissions'
-
 alias vim='nvim'
 
 alias cm='chezmoi'
