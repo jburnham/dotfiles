@@ -49,7 +49,7 @@ safe() {
 
     safehouse \
         --workdir="$project_dir" \
-        --enable=cloud-credentials,keychain,process-control,1password \
+        --enable=cloud-credentials,keychain,process-control,1password,playwright-chrome \
         "${append_profile_args[@]}" \
         "$@"
 }

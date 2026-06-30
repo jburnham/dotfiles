@@ -1,0 +1,6 @@
+;; Allow the Playwright MCP server to manage its cache dir.
+;; Path: ~/Library/Caches/ms-playwright-mcp/...
+;; Safehouse's base policy intentionally omits broad ~/Library/Caches writes,
+;; so each tool's cache subtree is opted in via its own profile snippet.
+(allow file-read* file-write*
+  (home-subpath "/Library/Caches/ms-playwright-mcp"))
