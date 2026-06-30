@@ -33,13 +33,27 @@
       "url": "https://mcp.linear.app/mcp",
       "enabled": true
     },
+    "drop": {
+      "type": "remote",
+      "url": "https://{{ .drop_mcp_host }}/mcp",
+      "enabled": true
+    },
     "platform-tools": {
+      "type": "remote",
+      "url": "https://{{ .work_mcp_host }}/api/mcp/devtools",
+      "enabled": true
+    },
+    "playwright": {
       "type": "local",
       "command": [
-        "npx", "-y", "mcp-remote@latest",
-        "https://{{ .work_mcp_host }}/api/mcp/devtools",
-        "--resource", "https://{{ .work_mcp_host }}/api/mcp/devtools"
+        "npx",
+        "@playwright/mcp@latest"
       ],
+      "enabled": true
+    },
+    "grafana-tools": {
+      "type": "local",
+      "command": ["{{ .chezmoi.homeDir }}/.local/bin/grafana-mcp-wrapper"],
       "enabled": true
     }
   }{{ end }}

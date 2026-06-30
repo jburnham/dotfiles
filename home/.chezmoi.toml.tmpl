@@ -1,12 +1,14 @@
 {{- $work := promptBoolOnce . "work_computer" "Is this a work computer" -}}
 {{- $credTool := "" -}}
 {{- $mcpHost := "" -}}
+{{- $dropMcpHost := "" -}}
 {{- $workEmail := "" -}}
 {{- $workOrgs := "" -}}
 {{- $privateTerms := promptStringOnce . "private_terms" "Private terms to block from commits, comma-separated" -}}
 {{- if $work -}}
 {{-   $credTool = promptStringOnce . "cred_tool" "Credential helper name (bare tool word)" -}}
 {{-   $mcpHost = promptStringOnce . "work_mcp_host" "Work MCP host (e.g. mcp.example.com)" -}}
+{{-   $dropMcpHost = promptStringOnce . "drop_mcp_host" "Drop MCP host (e.g. drop.example.com)" -}}
 {{-   $workEmail = promptStringOnce . "work_email" "Work git email" -}}
 {{-   $workOrgs = promptStringOnce . "work_orgs" "Work GitHub org slugs (comma-separated)" -}}
 {{- end -}}
@@ -15,6 +17,7 @@
     work_computer = {{ $work }}
     cred_tool = {{ $credTool | quote }}
     work_mcp_host = {{ $mcpHost | quote }}
+    drop_mcp_host = {{ $dropMcpHost | quote }}
     work_email = {{ $workEmail | quote }}
     work_orgs = {{ $workOrgs | quote }}
     private_terms = {{ $privateTerms | quote }}
