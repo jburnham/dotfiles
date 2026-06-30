@@ -13,13 +13,13 @@ _safehouse_existing_dirs() {
 
 export SAFEHOUSE_ADD_DIRS_RO="$(_safehouse_existing_dirs \
     "$HOME/.config/oh-my-posh" \
-    "$HOME/.cloudflared" \
     "$HOME/.local/bin" \
     "$HOME/.cache/huggingface")"
 
 export SAFEHOUSE_ADD_DIRS="$(_safehouse_existing_dirs \
     "$HOME/.memsearch" \
     "$HOME/.aws-sso" \
+    "$HOME/.cloudflared" \
 {{- if .cred_tool }}
     "$HOME/.local/state/{{ .cred_tool }}" \
 {{- end }}
