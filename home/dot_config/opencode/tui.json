@@ -1,5 +1,3 @@
 {
-  "plugin": [
-    "@streetturtle/opencode-recap"
-  ]
+  "plugin": ["./plugins/utc-spend.tsx"]
 }
