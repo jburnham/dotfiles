@@ -1,0 +1,8 @@
+{{ if .work_computer -}}
+[[ssh-keys]]
+item = {{ lower .work_vault | quote }}
+vault = {{ .work_vault | quote }}
+{{ end -}}
+[[ssh-keys]]
+item = "2024-02-01 personal"
+vault = "Private"

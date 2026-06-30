@@ -4,6 +4,7 @@
 {{- $dropMcpHost := "" -}}
 {{- $workEmail := "" -}}
 {{- $workOrgs := "" -}}
+{{- $workVault := "" -}}
 {{- $privateTerms := promptStringOnce . "private_terms" "Private terms to block from commits, comma-separated" -}}
 {{- if $work -}}
 {{-   $credTool = promptStringOnce . "cred_tool" "Credential helper name (bare tool word)" -}}
@@ -11,6 +12,7 @@
 {{-   $dropMcpHost = promptStringOnce . "drop_mcp_host" "Drop MCP host (e.g. drop.example.com)" -}}
 {{-   $workEmail = promptStringOnce . "work_email" "Work git email" -}}
 {{-   $workOrgs = promptStringOnce . "work_orgs" "Work GitHub org slugs (comma-separated)" -}}
+{{-   $workVault = promptStringOnce . "work_vault" "Work 1Password vault name (e.g. for SSH agent keys)" -}}
 {{- end -}}
 
 [data]
@@ -20,6 +22,7 @@
     drop_mcp_host = {{ $dropMcpHost | quote }}
     work_email = {{ $workEmail | quote }}
     work_orgs = {{ $workOrgs | quote }}
+    work_vault = {{ $workVault | quote }}
     private_terms = {{ $privateTerms | quote }}
 
 [diff]
