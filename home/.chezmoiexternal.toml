@@ -1,17 +1,11 @@
 [".claude/skills/handoff/SKILL.md"]
-    checksum.sha512 = "8e7bca9d1783526423f0a89860edae174bee7bf4a9ec006fa9a4e9e3003d46ca0033b9208cf4c47cf527118c02f0ea8c98b7ee4732f60f3f3818107e96eca1fe"
+    checksum.sha512 = "5d9341b6f103f8b9cc515730e24e9e363d11ca5094e738e93a9d8b0010a2a4fe172728ce4c7132f281e231e29378b31ae7f3a91a2e25ceea3be7d7290800f663"
     type = "file"
     url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/productivity/handoff/SKILL.md"
     refreshPeriod = "168h"
 
-[".claude/skills/zoom-out/SKILL.md"]
-    checksum.sha512 = "c94889f64d07b1614a995781f9745c6f9511f4fc0f31ddaf43463ebddf4b48ceaf39e8135c4a07488b8a96a3274ac18e1871a6418d578f1c5ab72d8096025971"
-    type = "file"
-    url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/engineering/zoom-out/SKILL.md"
-    refreshPeriod = "168h"
-
 [".claude/skills/prototype/SKILL.md"]
-    checksum.sha512 = "263e87d4df4a9eeb67df408ae9565825e76c79a88ce2c8e23d2010cfba22f50723628785117accd307e74db8f7198f39cb7d81cd1ad760cc0960ebbc07539fcd"
+    checksum.sha512 = "d04fc6df9cf2dca608a53886e7c68978893a1f73e2a6b268ff734ff76ad0472e231e1a6ac00f99f5973e30f250aafc84a85bdc0da07d5123ca3a17b0347f1e46"
     type = "file"
     url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/engineering/prototype/SKILL.md"
     refreshPeriod = "168h"
@@ -29,7 +23,7 @@
     refreshPeriod = "168h"
 
 [".claude/skills/teach/SKILL.md"]
-    checksum.sha512 = "970d456b4f44b128851fbd794fa9c1f27e005f08ba97ef9128592a148c1b17d737e5624e4ecd636941571dc79cd8e44ac60963dc0a8a3318c8e71f61f23a3ec1"
+    checksum.sha512 = "3c16f451184cd56e8126025380d807ae4804eeac492418c05aa4783f103c54ee7385fc4e436997d79559d49399bad0980c7d1b602c7d757e5d1028d6dc2d0d3b"
     type = "file"
     url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/productivity/teach/SKILL.md"
     refreshPeriod = "168h"
