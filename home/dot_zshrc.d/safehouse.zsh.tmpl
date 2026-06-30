@@ -25,6 +25,9 @@ export SAFEHOUSE_ADD_DIRS="$(_safehouse_existing_dirs \
 {{- end }}
     "$HOME/.cdk" \
     "$HOME/.claude")"
+
+# work around bug in opencode https://github.com/anomalyco/opencode/issues/33632
+export OPENCODE_DISABLE_FFF=1
 safe() {
     local resolved_home project_dir git_root
     resolved_home="$(cd "$HOME" && pwd -P)"
@@ -53,4 +56,4 @@ safe() {
 
 safe-claude() { safe claude --dangerously-skip-permissions "$@" }
 safe-codex()  { safe codex "$@" }
-safe-opencode() { safe opencode "$@" }
+safe-opencode() { safe --env-pass=OPENCODE_DISABLE_FFF opencode "$@" }
