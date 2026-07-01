@@ -5,6 +5,8 @@
 {{- $workEmail := "" -}}
 {{- $workOrgs := "" -}}
 {{- $workVault := "" -}}
+{{- $awsSsoStartUrl := "" -}}
+{{- $awsSsoAccountId := "" -}}
 {{- $privateTerms := promptStringOnce . "private_terms" "Private terms to block from commits, comma-separated" -}}
 {{- if $work -}}
 {{-   $credTool = promptStringOnce . "cred_tool" "Credential helper name (bare tool word)" -}}
@@ -13,6 +15,8 @@
 {{-   $workEmail = promptStringOnce . "work_email" "Work git email" -}}
 {{-   $workOrgs = promptStringOnce . "work_orgs" "Work GitHub org slugs (comma-separated)" -}}
 {{-   $workVault = promptStringOnce . "work_vault" "Work 1Password vault name (e.g. for SSH agent keys)" -}}
+{{-   $awsSsoStartUrl = promptStringOnce . "aws_sso_start_url" "AWS SSO start URL" -}}
+{{-   $awsSsoAccountId = promptStringOnce . "aws_sso_account_id" "AWS SSO account ID" -}}
 {{- end -}}
 
 [data]
@@ -23,6 +27,8 @@
     work_email = {{ $workEmail | quote }}
     work_orgs = {{ $workOrgs | quote }}
     work_vault = {{ $workVault | quote }}
+    aws_sso_start_url = {{ $awsSsoStartUrl | quote }}
+    aws_sso_account_id = {{ $awsSsoAccountId | quote }}
     private_terms = {{ $privateTerms | quote }}
 
 [diff]
