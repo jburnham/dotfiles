@@ -1,28 +1,48 @@
 packages:
   darwin:
     brews:
+      - act
       - anomalyco/tap/opencode
       - atuin
+      - awscli
       - bat
+      - cfn-lint
+      - chezmoi
       - coreutils
       - eugene1g/safehouse/agent-safehouse
       - eza
       - fzf
       - gh
+      - git
       - git-delta
+      - git-filter-repo
+      - glow
+      - golangci-lint
       - jandedobbeleer/oh-my-posh/oh-my-posh
       - jless
+      - just
       - lazygit
       - lefthook
       - mise
       - neovim
+      - node
+      - pipx
+      - pnpm
+      - pre-commit
+      - restic
       - shellcheck
       - shfmt
       - tmux
+      - uv
+      - wget
       - zoxide
+    work_brews:
+      - aws-sso-cli
     casks:
       - 1password-cli
       - clearance
+      - cmux
+      - flameshot
       - font-0xproto-nerd-font
       - font-fira-code
       - font-jetbrains-mono-nerd-font

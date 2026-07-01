@@ -2,9 +2,15 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+{{/* Combine base brews with work-only brews when on a work machine. */ -}}
+{{- $brews := .packages.darwin.brews -}}
+{{- if .work_computer -}}
+{{-   $brews = concat $brews .packages.darwin.work_brews -}}
+{{- end -}}
+
 {{/* Collect taps from any owner/tap/formula entries so they can be trusted and cloned before install. */ -}}
 {{- $taps := list -}}
-{{- range .packages.darwin.brews -}}
+{{- range $brews -}}
 {{-   $parts := splitList "/" . -}}
 {{-   if eq (len $parts) 3 -}}
 {{-     $taps = append $taps (printf "%s/%s" (index $parts 0) (index $parts 1)) -}}
@@ -19,7 +25,7 @@ brew bundle --file=/dev/stdin <<EOF
 {{ range $taps -}}
 tap {{ . | quote }}
 {{ end -}}
-{{ range .packages.darwin.brews -}}
+{{ range $brews -}}
 brew {{ . | quote }}
 {{ end -}}
 {{ range .packages.darwin.casks -}}
