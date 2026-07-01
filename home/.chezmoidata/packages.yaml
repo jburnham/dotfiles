@@ -2,6 +2,7 @@ packages:
   darwin:
     brews:
       - anomalyco/tap/opencode
+      - atuin
       - bat
       - coreutils
       - eugene1g/safehouse/agent-safehouse
@@ -13,6 +14,7 @@ packages:
       - jless
       - lazygit
       - lefthook
+      - mise
       - neovim
       - shellcheck
       - shfmt
