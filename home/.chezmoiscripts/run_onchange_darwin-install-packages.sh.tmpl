@@ -2,7 +2,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-{{/* Collect taps from any owner/tap/formula entries so brew trust can allow them. */ -}}
+{{/* Collect taps from any owner/tap/formula entries so they can be trusted and cloned before install. */ -}}
 {{- $taps := list -}}
 {{- range .packages.darwin.brews -}}
 {{-   $parts := splitList "/" . -}}
@@ -16,6 +16,9 @@ brew trust --tap {{ . | quote }}
 {{ end -}}
 
 brew bundle --file=/dev/stdin <<EOF
+{{ range $taps -}}
+tap {{ . | quote }}
+{{ end -}}
 {{ range .packages.darwin.brews -}}
 brew {{ . | quote }}
 {{ end -}}
