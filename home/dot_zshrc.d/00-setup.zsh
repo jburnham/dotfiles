@@ -41,3 +41,9 @@ eval "$(brew shellenv)"
 eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/main.toml)"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(mise activate zsh)"
+# Only run mise's env-refresh hook on directory change, not on every prompt.
+# _mise_hook_chpwd (cd) still does the real work; precmd was redundantly
+# re-running it on every command. Trade-off: config changes made without
+# cd'ing away and back won't be picked up until the next cd.
+# https://github.com/jdx/mise/discussions/2164
+precmd_functions=(${precmd_functions:#_mise_hook_precmd})
