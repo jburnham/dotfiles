@@ -8,7 +8,9 @@ packages:
       - bat
       - cfn-lint
       - chezmoi
+      - colima
       - coreutils
+      - docker
       - eugene1g/safehouse/agent-safehouse
       - eza
       - fzf
@@ -16,6 +18,7 @@ packages:
       - git
       - git-delta
       - git-filter-repo
+      - grpcurl
       - glow
       - golangci-lint
       - jandedobbeleer/oh-my-posh/oh-my-posh
@@ -38,6 +41,11 @@ packages:
       - zoxide
     work_brews:
       - aws-sso-cli
+      - graphviz
+      - oven-sh/bun/bun
+      - pi-coding-agent
+      - websocat
+      - yarn
     casks:
       - 1password-cli
       - clearance
@@ -47,4 +55,6 @@ packages:
       - font-fira-code
       - font-jetbrains-mono-nerd-font
       - font-meslo-lg-nerd-font
+      - ghostty
       - qlmarkdown
+      - session-manager-plugin
