@@ -1,23 +1,23 @@
 [".claude/skills/handoff/SKILL.md"]
-    checksum.sha512 = "5d9341b6f103f8b9cc515730e24e9e363d11ca5094e738e93a9d8b0010a2a4fe172728ce4c7132f281e231e29378b31ae7f3a91a2e25ceea3be7d7290800f663"
+    checksum.sha512 = "d4f8788ae12642416628f486689e894ef2d843eac806b496ddeb27f576c77d6baa1c5cf2dfd3685a5684a80d545420ca0c107e3564eaa1e1da650f365124fb17"
     type = "file"
     url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/productivity/handoff/SKILL.md"
     refreshPeriod = "168h"
 
 [".claude/skills/prototype/SKILL.md"]
-    checksum.sha512 = "d04fc6df9cf2dca608a53886e7c68978893a1f73e2a6b268ff734ff76ad0472e231e1a6ac00f99f5973e30f250aafc84a85bdc0da07d5123ca3a17b0347f1e46"
+    checksum.sha512 = "c54dfa38459117ed054115430c53b6b53afc5b1aadec50a8d39c21d1ca9a6240cec31b9747076d29a88b8d349a6248fbd055c9be91684db44865d80781749d96"
     type = "file"
     url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/engineering/prototype/SKILL.md"
     refreshPeriod = "168h"
 
 [".claude/skills/prototype/LOGIC.md"]
-    checksum.sha512 = "97eaaf1553f32dff9f549cdb5a50d150d77e6a1b28be2ff26ef5c5233a2d3912e757987026a0e47c5910b354711d40c6cac8464158ee9266770a41ee1d072f40"
+    checksum.sha512 = "5411d8cae5a8f48eb34b62636d0e6618cbca485b5ff72c9d7774f622ec7ee91b9f94585f7fd33c43082a65fa2fa45e6f4238e4036de6e770f368b1ced089b613"
     type = "file"
     url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/engineering/prototype/LOGIC.md"
     refreshPeriod = "168h"
 
 [".claude/skills/prototype/UI.md"]
-    checksum.sha512 = "0771e79b8c93d463229119bd54ff4b0072391f9c50d4d876e5db3c0543438ad938693b345e790ad645a35dd177c8d4356b0f9a1c6ecd5c9d4496d4b9fe560acd"
+    checksum.sha512 = "2d2eda572f76733d8b7aacecfee5b85780912e4320a79c36f7f707d235b1e361c78da71b8171da1f8c48b1e86205ec2fefa444eb6a4f95cf079ed8eb1f345de6"
     type = "file"
     url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/engineering/prototype/UI.md"
     refreshPeriod = "168h"
