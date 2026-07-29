@@ -28,6 +28,7 @@ export SAFEHOUSE_ADD_DIRS="$(_safehouse_existing_dirs \
 
 # work around bug in opencode https://github.com/anomalyco/opencode/issues/33632
 export OPENCODE_DISABLE_FFF=1
+
 safe() {
     local resolved_home project_dir git_root
     resolved_home="$(cd "$HOME" && pwd -P)"
@@ -47,10 +48,29 @@ safe() {
         append_profile_args+=(--append-profile="$profile")
     done
 
+    # safehouse execs via `env -i`, so agents get nothing from this shell unless
+    # we hand it over. --env=FILE sources the same file zsh does, so adding a var
+    # to env.sh reaches sandboxed agents with no list to maintain here.
+    # Guarded: safehouse hard-fails if the path is missing.
+    local -a env_file_args
+    [[ -f ${HOME}/.config/shell/env.sh ]] \
+        && env_file_args=(--env="${HOME}/.config/shell/env.sh")
+
+    # Read at call time, so files sourced after this one still get a say.
+    # Dedupe and join in two steps: nesting (u) inside (j) silently skips the
+    # dedupe, and (uj:,:) in one expansion does too.
+    local -a env_pass_unique
+    env_pass_unique=(${(u)safehouse_env_pass})
+    local -a env_pass_args
+    (( $#env_pass_unique )) \
+        && env_pass_args=(--env-pass="${(j:,:)env_pass_unique}")
+
     safehouse \
         --workdir="$project_dir" \
         --enable=cloud-credentials,keychain,process-control,1password,playwright-chrome \
         "${append_profile_args[@]}" \
+        "${env_file_args[@]}" \
+        "${env_pass_args[@]}" \
         "$@"
 }
 

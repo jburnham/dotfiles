@@ -12,18 +12,26 @@ setopt hist_verify              # show command with history expansion to user be
 setopt inc_append_history_time  # append command to history file immediately after execution
 unsetopt share_history          # do not share history between multiple zsh sessions
 
-path=(
-    "$HOME/.local/bin"
-    "$(go env GOPATH)/bin"
-    "$path[@]"
-)
+# Env vars and PATH shared with the bash that AI agents run. Also passed to
+# sandboxed agents via `safehouse --env=` (see safehouse.zsh.tmpl) — edit that
+# file to add a var everywhere at once.
+source ~/.config/shell/env.sh
 
-export DO_NOT_TRACK=true
-export EDITOR=nvim
-export GH_TELEMETRY=false
-export HOMEBREW_NO_ANALYTICS=1
+# zsh-only below: NIX_PATH and SSH_AUTH_SOCK stay here because they are
+# machine-specific, and SSH_AUTH_SOCK's literal ~ relies on zsh expanding it.
 export NIX_PATH="$HOME/.nix-defexpr"
 export SSH_AUTH_SOCK="~/.ssh/agent"
+
+# Names of host env vars to forward into safehouse sandboxes (see
+# safehouse.zsh). Declared here, first in load order, so any later zshrc.d file
+# can append without worrying about who runs first:
+#
+#     safehouse_env_pass+=(SOME_VAR)
+#
+# Append (+=), never assign (=), or you'll drop entries added before you.
+# Only the name travels, never the value. Unset names are skipped silently,
+# so listing one that only exists on some machines is fine.
+typeset -ga safehouse_env_pass=()
 
 # zsh-autosuggestions plugin
 source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
