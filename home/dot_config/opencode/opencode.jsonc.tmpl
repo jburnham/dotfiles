@@ -3,14 +3,14 @@
   "permission": {
     "external_directory": {
       "/tmp/**": "allow",
-      "~/go/**": "allow"
+      "~/go/**": "allow",
+      "~/wk/src/**": "allow"
     }
   },
   "plugin": [
-    "superpowers@git+https://github.com/obra/superpowers.git"{{ if .work_computer }},
-    "@zilliz/memsearch-opencode"{{ end }}
+    "superpowers@git+https://github.com/obra/superpowers.git"
   ]{{ if .work_computer }},
-  "model": "amazon-bedrock/us.anthropic.claude-opus-4-8",
+  "model": "amazon-bedrock/global.anthropic.claude-opus-4-8",
   "default_agent": "build-laconic",
   "agent": {
     "explore": {
@@ -39,7 +39,7 @@
       "url": "https://{{ .drop_mcp_host }}/mcp",
       "enabled": true
     },
-    "platform-tools": {
+    "hub-tools": {
       "type": "remote",
       "url": "https://{{ .work_mcp_host }}/api/mcp/devtools",
       "enabled": true
