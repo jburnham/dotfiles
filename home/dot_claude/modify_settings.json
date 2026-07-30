@@ -82,6 +82,18 @@ printf '%s' "$existing" | jq --sort-keys --argjson is_work "$is_work" --arg cred
       "Read"
     ]
   | .permissions.deny = [
+      "EnterPlanMode",
+      "ExitPlanMode",
+      "DesignSync",
+      "NotebookEdit",
+      "SendMessage",
+      "PushNotification",
+      "RemoteTrigger",
+      "ReportFindings",
+      "ScheduleWakeup",
+      "CronCreate",
+      "CronDelete",
+      "CronList",
       "Bash(sudo:*)",
       "Read(**/*.key)",
       "Read(**/*.pem)",
@@ -93,18 +105,7 @@ printf '%s' "$existing" | jq --sort-keys --argjson is_work "$is_work" --arg cred
       "Read(.env)",
       "Read(.env.*)"
     ]
-  | .hooks.PreToolUse = [
-      {
-        matcher: "Bash",
-        hooks: [
-          {
-            type: "command",
-            command: "$HOME/.claude/hooks/audit-command.sh",
-            timeout: 10
-          }
-        ]
-      }
-    ]
+  | .hooks.PreToolUse = []
   | .statusLine = {
       type: "command",
       command: "oh-my-posh claude --config ~/.config/oh-my-posh/claude.omp.json",
@@ -126,23 +127,16 @@ printf '%s' "$existing" | jq --sort-keys --argjson is_work "$is_work" --arg cred
         }
       }
     }
+  | .autoMemoryEnabled = false
   | if $is_work then
         .enabledPlugins         += {
-          "gopls-lsp@claude-plugins-official": true,
-          "memsearch@memsearch-plugins": true
+          "gopls-lsp@claude-plugins-official": true
         }
-      | .extraKnownMarketplaces += {
-          "memsearch-plugins": {
-            source: {
-              source: "github",
-              repo: "zilliztech/memsearch"
-            }
-          }
-        }
+      | .extraKnownMarketplaces += {}
+      | .disableRemoteControl = true
+      | .disableClaudeAiConnectors = true
       | .env                    += {
-          aaaANTHROPIC_MODEL: "us.anthropic.claude-opus-4-6-v1",
-          bbbANTHROPIC_MODEL: "us.anthropic.claude-opus-4-7",
-          ANTHROPIC_DEFAULT_SONNET_MODEL: "us.anthropic.claude-sonnet-4-6",
+          ANTHROPIC_DEFAULT_SONNET_MODEL: "us.anthropic.claude-sonnet-5",
           AWS_REGION: "us-east-1",
           CLAUDE_CODE_USE_BEDROCK: "1"
         }
