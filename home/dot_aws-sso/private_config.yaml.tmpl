@@ -4,8 +4,11 @@ SSOConfig:
         SSORegion: us-east-1
         StartUrl: {{ .aws_sso_start_url }}
         Accounts:
-          {{ .aws_sso_account_id }}:
-            Name: prod
+{{- range splitList "," .aws_sso_accounts }}
+{{-   $account := splitList ":" (trim .) }}
+          {{ index $account 0 }}:
+            Name: {{ index $account 1 }}
+{{- end }}
 ConsoleDuration: 720
 CacheRefresh: 168
 LogLevel: error

@@ -1,2 +1,5 @@
 .config/nvim/lazyvim.json
 .oh-my-zsh/cache
+{{ if not .work_computer }}
+.aws-sso
+{{ end }}
