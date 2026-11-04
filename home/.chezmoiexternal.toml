@@ -1,55 +1,55 @@
 [".claude/skills/handoff/SKILL.md"]
-    checksum.sha512 = "d4f8788ae12642416628f486689e894ef2d843eac806b496ddeb27f576c77d6baa1c5cf2dfd3685a5684a80d545420ca0c107e3564eaa1e1da650f365124fb17"
+    checksum.sha512 = "21361a96f35baeba27b141f79805125f126fea26cb0a1ee3ea4d148259d780fa14029f6012e3c04b1a9607cceff4b2dc18b8c609f0e5430df85214803e0e4d6a"
     type = "file"
-    url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/productivity/handoff/SKILL.md"
+    url = "https://raw.githubusercontent.com/mattpocock/skills/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/productivity/handoff/SKILL.md"
     refreshPeriod = "168h"
 
 [".claude/skills/prototype/SKILL.md"]
-    checksum.sha512 = "c54dfa38459117ed054115430c53b6b53afc5b1aadec50a8d39c21d1ca9a6240cec31b9747076d29a88b8d349a6248fbd055c9be91684db44865d80781749d96"
+    checksum.sha512 = "d2cfc0a1787b16b3aeccf3b0161e594e175cef7655fb7b7976c43821820224a927f7a6a8d6c796a2b69894aeb1d1fd27f63546c7dbc17fc77ecf43d7b05ad37c"
     type = "file"
-    url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/engineering/prototype/SKILL.md"
+    url = "https://raw.githubusercontent.com/mattpocock/skills/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/engineering/prototype/SKILL.md"
     refreshPeriod = "168h"
 
 [".claude/skills/prototype/LOGIC.md"]
-    checksum.sha512 = "5411d8cae5a8f48eb34b62636d0e6618cbca485b5ff72c9d7774f622ec7ee91b9f94585f7fd33c43082a65fa2fa45e6f4238e4036de6e770f368b1ced089b613"
+    checksum.sha512 = "b70980044d714c8010860a0bbc845ab6002561dcfc0bf24084847fa03c5cd4872cef31e4be00b0bac950159c220901d32c6ac082220fb04ab1c02544792c76b9"
     type = "file"
-    url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/engineering/prototype/LOGIC.md"
+    url = "https://raw.githubusercontent.com/mattpocock/skills/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/engineering/prototype/LOGIC.md"
     refreshPeriod = "168h"
 
 [".claude/skills/prototype/UI.md"]
-    checksum.sha512 = "2d2eda572f76733d8b7aacecfee5b85780912e4320a79c36f7f707d235b1e361c78da71b8171da1f8c48b1e86205ec2fefa444eb6a4f95cf079ed8eb1f345de6"
+    checksum.sha512 = "127cacdc5d54fd2fc122e488cee069db3f7fb1e01d001bfb0ecbd1bf547c0a885f1b3d67631415bc839bc24a1dc01c30446dc0a4744a173415badc16db03e840"
     type = "file"
-    url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/engineering/prototype/UI.md"
+    url = "https://raw.githubusercontent.com/mattpocock/skills/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/engineering/prototype/UI.md"
     refreshPeriod = "168h"
 
 [".claude/skills/teach/SKILL.md"]
-    checksum.sha512 = "3c16f451184cd56e8126025380d807ae4804eeac492418c05aa4783f103c54ee7385fc4e436997d79559d49399bad0980c7d1b602c7d757e5d1028d6dc2d0d3b"
+    checksum.sha512 = "dd26d35bde800d6ca36d35c7a762955bcec1150d0b4c7f4266b14caf99fc810e13632ba91563594e9410834127f421d8d25caedfad428808ccdf70cd7f55f3bb"
     type = "file"
-    url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/productivity/teach/SKILL.md"
+    url = "https://raw.githubusercontent.com/mattpocock/skills/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/productivity/teach/SKILL.md"
     refreshPeriod = "168h"
 
 [".claude/skills/teach/MISSION-FORMAT.md"]
-    checksum.sha512 = "92dd91e89dff1cbcc5f16b4cf905d9e8f714ed8342d7bfbcb118695fbc14e6ac26216ee493bc851f4bcb0ae6b31a8d1495d45e83919e44091faf581aa8a9fff8"
+    checksum.sha512 = "ba36f446905ea1f24986ffa31af7115a994947ec319209ce3034a2f020e8efa0312dde66cfa3165008cbd02268020e4051f23730185d1be68ca4bc16dbd312b3"
     type = "file"
-    url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/productivity/teach/MISSION-FORMAT.md"
+    url = "https://raw.githubusercontent.com/mattpocock/skills/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/productivity/teach/MISSION-FORMAT.md"
     refreshPeriod = "168h"
 
 [".claude/skills/teach/RESOURCES-FORMAT.md"]
-    checksum.sha512 = "75d1f2605f4117a718a14081867a5fe44a90de12f49213f43b5aafc30ee0e3bef97bb5cf46806a2aee52e1120a1a5d5d296a8f17dee6d65ca783d46803dd66a6"
+    checksum.sha512 = "460aa39c57f87894c998937437dc95331ac8a9fabd6b4dbd40a19a56f300ab8159ccba9cbe643170b340e001fbb1d19a51db2bc59c36e97b5f8254c3686a4a97"
     type = "file"
-    url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/productivity/teach/RESOURCES-FORMAT.md"
+    url = "https://raw.githubusercontent.com/mattpocock/skills/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/productivity/teach/RESOURCES-FORMAT.md"
     refreshPeriod = "168h"
 
 [".claude/skills/teach/LEARNING-RECORD-FORMAT.md"]
-    checksum.sha512 = "4d2b0b04af247313ec3a441c07ebcdaa6314b8124795ca2591594f0ea607584f05e3336664e8e2f16dbcc8a5c3009c34add6c2a32fcffeb9e9d041baae448eda"
+    checksum.sha512 = "85226a7442c31b42bcc138bc81f40b325db066ab32a77710e2c7ca162b118decfa93b067b7d3b7c26c8dc79dc8549aa8ceaedf1b4efc6b0de9459b7556ac6279"
     type = "file"
-    url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/productivity/teach/LEARNING-RECORD-FORMAT.md"
+    url = "https://raw.githubusercontent.com/mattpocock/skills/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/productivity/teach/LEARNING-RECORD-FORMAT.md"
     refreshPeriod = "168h"
 
 [".claude/skills/teach/GLOSSARY-FORMAT.md"]
-    checksum.sha512 = "276cf0c2b249b39a381041ee1388d657113ff10ccd076354f81e12ec2bb5707758e91c53f8f110c67e6117a378476d93a398254d896447d704898d54da87697a"
+    checksum.sha512 = "572674a0a4b273d6825d95b767a723ff4f724f8bb4c83e60b20c4c1bb6ee24163f7d61df24df9806cb732f380fcdc6e2aa517865477f855bfbeda9485dc97b0c"
     type = "file"
-    url = "https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/productivity/teach/GLOSSARY-FORMAT.md"
+    url = "https://raw.githubusercontent.com/mattpocock/skills/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/productivity/teach/GLOSSARY-FORMAT.md"
     refreshPeriod = "168h"
 
 [".config/zsh/plugins/zshrc.d"]
