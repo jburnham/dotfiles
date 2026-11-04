@@ -3,6 +3,7 @@
 {{- $mcpHost := "" -}}
 {{- $dropMcpHost := "" -}}
 {{- $infraMcpHost := "" -}}
+{{- $awsMcpProfiles := "" -}}
 {{- $workEmail := "" -}}
 {{- $workOrgs := "" -}}
 {{- $workVault := "" -}}
@@ -14,6 +15,7 @@
 {{-   $mcpHost = promptStringOnce . "work_mcp_host" "Work MCP host (e.g. mcp.example.com)" -}}
 {{-   $dropMcpHost = promptStringOnce . "drop_mcp_host" "Drop MCP host (e.g. drop.example.com)" -}}
 {{-   $infraMcpHost = promptStringOnce . "infra_mcp_host" "Infra MCP host (e.g. infra-mcp.example.com)" -}}
+{{-   $awsMcpProfiles = promptStringOnce . "aws_mcp_profiles" "AWS profiles for aws-mcp --profile (comma-separated, default first)" -}}
 {{-   $workEmail = promptStringOnce . "work_email" "Work git email" -}}
 {{-   $workOrgs = promptStringOnce . "work_orgs" "Work GitHub org slugs (comma-separated)" -}}
 {{-   $workVault = promptStringOnce . "work_vault" "Work 1Password vault name (e.g. for SSH agent keys)" -}}
@@ -27,6 +29,7 @@
     work_mcp_host = {{ $mcpHost | quote }}
     drop_mcp_host = {{ $dropMcpHost | quote }}
     infra_mcp_host = {{ $infraMcpHost | quote }}
+    aws_mcp_profiles = {{ $awsMcpProfiles | quote }}
     work_email = {{ $workEmail | quote }}
     work_orgs = {{ $workOrgs | quote }}
     work_vault = {{ $workVault | quote }}

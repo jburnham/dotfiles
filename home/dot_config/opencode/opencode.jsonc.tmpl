@@ -35,6 +35,7 @@
         "uvx",
         "mcp-proxy-for-aws@1.7.0",
         "https://aws-mcp.us-east-1.api.aws/mcp",
+        "--profile",{{ range splitList "," .aws_mcp_profiles }} {{ trim . | quote }},{{ end }}
         "--skip-auth", "--disable-telemetry", "--metadata",
         "INSTALL_SOURCE=aws-cli"
       ]
