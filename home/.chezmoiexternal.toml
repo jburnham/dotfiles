@@ -86,7 +86,7 @@
 
 [".local/bin/git-trim"]
     type = "file"
-    url = "https://raw.githubusercontent.com/jasonmccreary/git-trim/975538d1d6336b79523258c4dfa0eac1581e04b7/git-trim"
-    checksum.sha512 = "af269345cce6ca8b1f9bc16058c87be6656f5d82cba4ec380c359bcaa45ec2cd5ce56132793ff15b62b8b1df47d81dce922b629bdae19c070d6e9f9c70cdc369"
+    url = "https://raw.githubusercontent.com/jburnham/git-trim/041df86258b0cde864dd619e5172716338c2d736/git-trim"
+    checksum.sha512 = "2ee38c701d0c9518c7f58e8267d2d5be8e916c7935bc68100cccbc13ce6a9091f0d67464236e0c4fe53032bd9ab8d11f40700cb7884f3f250e4d728bb053214b"
     executable = true
     refreshPeriod = "168h"
