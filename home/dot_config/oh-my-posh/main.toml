@@ -15,7 +15,7 @@ final_space = true
   background = 'transparent'
 
 [transient_prompt]
-  template = '{{ if .Segments.Time }}{{ .Segments.Time.CurrentDate | date .Segments.Time.Format }}{{ else }}{{ now | date "15:04:05" }}{{ end }} {{ if gt .Code 0 }}<p:red>❯</>{{ else }}<p:magenta>❯</>{{ end }} '
+  template = '{{ if .Segments.Time }}{{ .Segments.Time.CurrentDate | date .Segments.Time.Format }}{{ else }}{{ now | date "15:04:05" }}{{ end }} <p:blue>{{ .PWD }}</> {{ if gt .Code 0 }}<p:red>❯</>{{ else }}<p:magenta>❯</>{{ end }} '
   foreground = 'p:yellow'
   background = 'transparent'
   newline = true
