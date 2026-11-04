@@ -1,7 +1,8 @@
 ---
 description: SDD reviewer — read-only review on a pinned model.
 mode: subagent
-model: amazon-bedrock/global.anthropic.claude-opus-4-8
+model: amazon-bedrock/global.openai.gpt-5.6-terra
+reasoningEffort: max
 permission:
   edit: deny
 ---

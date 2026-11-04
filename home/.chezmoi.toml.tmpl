@@ -2,6 +2,7 @@
 {{- $credTool := "" -}}
 {{- $mcpHost := "" -}}
 {{- $dropMcpHost := "" -}}
+{{- $infraMcpHost := "" -}}
 {{- $workEmail := "" -}}
 {{- $workOrgs := "" -}}
 {{- $workVault := "" -}}
@@ -12,6 +13,7 @@
 {{-   $credTool = promptStringOnce . "cred_tool" "Credential helper name (bare tool word)" -}}
 {{-   $mcpHost = promptStringOnce . "work_mcp_host" "Work MCP host (e.g. mcp.example.com)" -}}
 {{-   $dropMcpHost = promptStringOnce . "drop_mcp_host" "Drop MCP host (e.g. drop.example.com)" -}}
+{{-   $infraMcpHost = promptStringOnce . "infra_mcp_host" "Infra MCP host (e.g. infra-mcp.example.com)" -}}
 {{-   $workEmail = promptStringOnce . "work_email" "Work git email" -}}
 {{-   $workOrgs = promptStringOnce . "work_orgs" "Work GitHub org slugs (comma-separated)" -}}
 {{-   $workVault = promptStringOnce . "work_vault" "Work 1Password vault name (e.g. for SSH agent keys)" -}}
@@ -24,6 +26,7 @@
     cred_tool = {{ $credTool | quote }}
     work_mcp_host = {{ $mcpHost | quote }}
     drop_mcp_host = {{ $dropMcpHost | quote }}
+    infra_mcp_host = {{ $infraMcpHost | quote }}
     work_email = {{ $workEmail | quote }}
     work_orgs = {{ $workOrgs | quote }}
     work_vault = {{ $workVault | quote }}

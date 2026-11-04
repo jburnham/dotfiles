@@ -10,7 +10,7 @@
   "plugin": [
     "superpowers@git+https://github.com/obra/superpowers.git"
   ]{{ if .work_computer }},
-  "model": "amazon-bedrock/global.anthropic.claude-opus-4-8",
+  "model": "amazon-bedrock/global.anthropic.claude-opus-5",
   "default_agent": "build-laconic",
   "agent": {
     "explore": {
@@ -29,6 +29,16 @@
     }
   },
   "mcp": {
+    "aws-mcp": {
+      "type": "local",
+      "command": [
+        "uvx",
+        "mcp-proxy-for-aws@1.7.0",
+        "https://aws-mcp.us-east-1.api.aws/mcp",
+        "--skip-auth", "--disable-telemetry", "--metadata",
+        "INSTALL_SOURCE=aws-cli"
+      ]
+    },
     "linear": {
       "type": "remote",
       "url": "https://mcp.linear.app/mcp",
@@ -37,7 +47,7 @@
     "drop": {
       "type": "remote",
       "url": "https://{{ .drop_mcp_host }}/mcp",
-      "enabled": true
+      "enabled": false
     },
     "hub-tools": {
       "type": "remote",
@@ -50,12 +60,16 @@
         "npx",
         "@playwright/mcp@latest"
       ],
-      "enabled": true
+      "enabled": false
     },
     "grafana-tools": {
       "type": "local",
       "command": ["{{ .chezmoi.homeDir }}/.local/bin/grafana-mcp-wrapper"],
-      "enabled": true
+      "enabled": false
+    },
+    "infra-mcp": {
+      "type": "remote",
+      "url": "https://{{ .infra_mcp_host }}/mcp"
     }
   }{{ end }}
 }

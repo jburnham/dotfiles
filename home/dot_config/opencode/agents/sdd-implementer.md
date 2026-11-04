@@ -1,5 +1,6 @@
 ---
 description: SDD implementer — runs implementation tasks on a pinned model.
 mode: subagent
-model: amazon-bedrock/global.anthropic.claude-sonnet-5
+reasoningEffort: max
+model: amazon-bedrock/global.openai.gpt-5.6-luna
 ---
