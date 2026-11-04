@@ -105,7 +105,7 @@ printf '%s' "$existing" | jq --sort-keys --argjson is_work "$is_work" --arg cred
       "Read(.env)",
       "Read(.env.*)"
     ]
-  | .hooks.PreToolUse = []
+  | del(.hooks.PreToolUse)
   | .statusLine = {
       type: "command",
       command: "oh-my-posh claude --config ~/.config/oh-my-posh/claude.omp.json",
@@ -116,7 +116,8 @@ printf '%s' "$existing" | jq --sort-keys --argjson is_work "$is_work" --arg cred
   | .dddmodel             = "opus"
   | .enabledPlugins       = {
       "superpowers@claude-plugins-official": true,
-      "superpowers-chrome@superpowers-marketplace": true
+      "superpowers-chrome@superpowers-marketplace": true,
+      "codex@openai-codex": true
     }
   | .env                       = { SHELL: "/bin/bash" }
   | .extraKnownMarketplaces    = {
@@ -125,6 +126,12 @@ printf '%s' "$existing" | jq --sort-keys --argjson is_work "$is_work" --arg cred
           source: "github",
           repo: "obra/superpowers-marketplace"
         }
+      },
+      "openai-codex": {
+        source: {
+          source: "github",
+          repo: "openai/codex-plugin-cc"
+        }
       }
     }
   | .autoMemoryEnabled = false
@@ -132,26 +139,15 @@ printf '%s' "$existing" | jq --sort-keys --argjson is_work "$is_work" --arg cred
         .enabledPlugins         += {
           "gopls-lsp@claude-plugins-official": true
         }
-      | .extraKnownMarketplaces += {}
       | .disableRemoteControl = true
       | .disableClaudeAiConnectors = true
       | .env                    += {
           ANTHROPIC_DEFAULT_SONNET_MODEL: "us.anthropic.claude-sonnet-5",
+          AWS_PROFILE: "bedrock-\($cred_tool)",
           AWS_REGION: "us-east-1",
           CLAUDE_CODE_USE_BEDROCK: "1"
         }
-      | .awsCredentialExport     = "$(brew --prefix)/bin/bedrock-credential-\($cred_tool) -login"
-    else
-        .enabledPlugins         += {
-          "codex@openai-codex": true
-        }
-      | .extraKnownMarketplaces += {
-          "openai-codex": {
-            source: {
-              source: "github",
-              repo: "openai/codex-plugin-cc"
-            }
-          }
-        }
+      | del(.awsCredentialExport)
+      | .awsAuthRefresh          = "aws-sso login"
     end
 '
