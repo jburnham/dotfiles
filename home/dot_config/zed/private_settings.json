@@ -8,6 +8,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "diff_view_style": "unified",
   "auto_install_extensions": {
     "git-firefly": true,
     "html": true,
