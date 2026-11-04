@@ -21,6 +21,7 @@
 export DO_NOT_TRACK=1
 export GH_TELEMETRY=false
 export HOMEBREW_NO_ANALYTICS=1
+export ORT_DISABLE_TELEMETRY=1
 
 export EDITOR=nvim
 
