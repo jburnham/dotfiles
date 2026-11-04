@@ -18,9 +18,15 @@ export SAFEHOUSE_ADD_DIRS_RO="$(_safehouse_existing_dirs \
     "$HOME/.cache/huggingface")"
 
 export SAFEHOUSE_ADD_DIRS="$(_safehouse_existing_dirs \
-    "$HOME/wk/src" \
+    "$HOME/wk" \
+    "$HOME/Library/Caches" \
+    "$HOME/.cache/buf" \
     "$HOME/.cache/mcp2cli" \
+    "$HOME/.config/cortexkit" \
+    "$HOME/.difit" \
+    "$HOME/.local/share/cortexkit" \
     "$HOME/.memsearch" \
+    "$HOME/.pi-lens" \
     "$HOME/.aws-sso" \
     "$HOME/.cloudflared" \
     "$HOME/.omp" \
@@ -79,5 +85,6 @@ safe() {
 }
 
 safe-claude() { safe claude --dangerously-skip-permissions "$@" }
-safe-codex()  { safe codex "$@" }
+safe-codex()  { safe codex --dangerously-bypass-approvals-and-sandbox "$@" }
 safe-opencode() { safe --env-pass=OPENCODE_DISABLE_FFF opencode "$@" }
+safe-pi() { safe pi "$@" }
