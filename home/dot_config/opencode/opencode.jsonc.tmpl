@@ -10,14 +10,14 @@
   "plugin": [
     "superpowers@git+https://github.com/obra/superpowers.git"
   ]{{ if .work_computer }},
-  "model": "amazon-bedrock/global.anthropic.claude-opus-5",
+  "model": "amazon-bedrock/global.anthropic.claude-opus-5-5",
   "default_agent": "build-laconic",
   "agent": {
     "explore": {
-      "model": "amazon-bedrock/us.anthropic.claude-sonnet-5"
+      "model": "amazon-bedrock/global.anthropic.claude-sonnet-5-5"
     },
     "general": {
-      "model": "amazon-bedrock/us.anthropic.claude-sonnet-5"
+      "model": "amazon-bedrock/global.anthropic.claude-sonnet-5-5"
     }
   },
   "provider": {
