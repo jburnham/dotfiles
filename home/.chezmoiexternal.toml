@@ -1,56 +1,74 @@
-[".claude/skills/handoff/SKILL.md"]
-    checksum.sha512 = "21361a96f35baeba27b141f79805125f126fea26cb0a1ee3ea4d148259d780fa14029f6012e3c04b1a9607cceff4b2dc18b8c609f0e5430df85214803e0e4d6a"
-    type = "file"
-    url = "https://raw.githubusercontent.com/mattpocock/skills/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/productivity/handoff/SKILL.md"
+[".agents/skills/code-review-and-quality"]
+    checksum.sha512 = "937c67297dac4554b1442c520bde12f671d8801b797b41db096403c446592150496e2e588f30c07e59573212ed39ecd775556fb8ac38f7731548581e6bc98361"
+    exact = true
+    include = ["*/skills/code-review-and-quality/**"]
     refreshPeriod = "168h"
+    stripComponents = 3
+    type = "archive"
+    url = "https://github.com/addyosmani/agent-skills/archive/301b02b12bff98e4688e6984af6556802322bbde.tar.gz"
 
-[".claude/skills/prototype/SKILL.md"]
-    checksum.sha512 = "d2cfc0a1787b16b3aeccf3b0161e594e175cef7655fb7b7976c43821820224a927f7a6a8d6c796a2b69894aeb1d1fd27f63546c7dbc17fc77ecf43d7b05ad37c"
-    type = "file"
-    url = "https://raw.githubusercontent.com/mattpocock/skills/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/engineering/prototype/SKILL.md"
+[".agents/skills/code-simplification"]
+    checksum.sha512 = "937c67297dac4554b1442c520bde12f671d8801b797b41db096403c446592150496e2e588f30c07e59573212ed39ecd775556fb8ac38f7731548581e6bc98361"
+    exact = true
+    include = ["*/skills/code-simplification/**"]
     refreshPeriod = "168h"
+    stripComponents = 3
+    type = "archive"
+    url = "https://github.com/addyosmani/agent-skills/archive/301b02b12bff98e4688e6984af6556802322bbde.tar.gz"
 
-[".claude/skills/prototype/LOGIC.md"]
-    checksum.sha512 = "b70980044d714c8010860a0bbc845ab6002561dcfc0bf24084847fa03c5cd4872cef31e4be00b0bac950159c220901d32c6ac082220fb04ab1c02544792c76b9"
-    type = "file"
-    url = "https://raw.githubusercontent.com/mattpocock/skills/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/engineering/prototype/LOGIC.md"
+[".agents/skills/security-and-hardening"]
+    checksum.sha512 = "937c67297dac4554b1442c520bde12f671d8801b797b41db096403c446592150496e2e588f30c07e59573212ed39ecd775556fb8ac38f7731548581e6bc98361"
+    exact = true
+    include = ["*/skills/security-and-hardening/**"]
     refreshPeriod = "168h"
+    stripComponents = 3
+    type = "archive"
+    url = "https://github.com/addyosmani/agent-skills/archive/301b02b12bff98e4688e6984af6556802322bbde.tar.gz"
 
-[".claude/skills/prototype/UI.md"]
-    checksum.sha512 = "127cacdc5d54fd2fc122e488cee069db3f7fb1e01d001bfb0ecbd1bf547c0a885f1b3d67631415bc839bc24a1dc01c30446dc0a4744a173415badc16db03e840"
-    type = "file"
-    url = "https://raw.githubusercontent.com/mattpocock/skills/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/engineering/prototype/UI.md"
+[".agents/skills/difit"]
+    checksum.sha512 = "340ba931e2395699f3147945b93aa4273ab221a42639c1f655111b035872d4405ece55da0be168c32fd13381e2def36688904f6ba8ab5046050b8aea78052f2b"
+    exact = true
+    include = ["*/skills/difit/**"]
     refreshPeriod = "168h"
+    stripComponents = 3
+    type = "archive"
+    url = "https://github.com/yoshiko-pg/difit/archive/82a765c037ec28fe7fe90ab2f1e4b5748032b4fa.tar.gz"
 
-[".claude/skills/teach/SKILL.md"]
-    checksum.sha512 = "dd26d35bde800d6ca36d35c7a762955bcec1150d0b4c7f4266b14caf99fc810e13632ba91563594e9410834127f421d8d25caedfad428808ccdf70cd7f55f3bb"
-    type = "file"
-    url = "https://raw.githubusercontent.com/mattpocock/skills/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/productivity/teach/SKILL.md"
+[".agents/skills/difit-review"]
+    checksum.sha512 = "340ba931e2395699f3147945b93aa4273ab221a42639c1f655111b035872d4405ece55da0be168c32fd13381e2def36688904f6ba8ab5046050b8aea78052f2b"
+    exact = true
+    include = ["*/skills/difit-review/**"]
     refreshPeriod = "168h"
+    stripComponents = 3
+    type = "archive"
+    url = "https://github.com/yoshiko-pg/difit/archive/82a765c037ec28fe7fe90ab2f1e4b5748032b4fa.tar.gz"
 
-[".claude/skills/teach/MISSION-FORMAT.md"]
-    checksum.sha512 = "ba36f446905ea1f24986ffa31af7115a994947ec319209ce3034a2f020e8efa0312dde66cfa3165008cbd02268020e4051f23730185d1be68ca4bc16dbd312b3"
-    type = "file"
-    url = "https://raw.githubusercontent.com/mattpocock/skills/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/productivity/teach/MISSION-FORMAT.md"
+[".agents/skills/handoff"]
+    checksum.sha512 = "af8dd976a30ec691c7b87dd31e39ec8320f5fc60f706028d5fc1d5b46d7e1435971a5343ad7af58849d099a54892e93d0084d37b04dab65ef3eddf8b640ac0f4"
+    exact = true
+    include = ["*/skills/productivity/handoff/**"]
     refreshPeriod = "168h"
+    stripComponents = 4
+    type = "archive"
+    url = "https://github.com/mattpocock/skills/archive/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d.tar.gz"
 
-[".claude/skills/teach/RESOURCES-FORMAT.md"]
-    checksum.sha512 = "460aa39c57f87894c998937437dc95331ac8a9fabd6b4dbd40a19a56f300ab8159ccba9cbe643170b340e001fbb1d19a51db2bc59c36e97b5f8254c3686a4a97"
-    type = "file"
-    url = "https://raw.githubusercontent.com/mattpocock/skills/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/productivity/teach/RESOURCES-FORMAT.md"
+[".agents/skills/prototype"]
+    checksum.sha512 = "af8dd976a30ec691c7b87dd31e39ec8320f5fc60f706028d5fc1d5b46d7e1435971a5343ad7af58849d099a54892e93d0084d37b04dab65ef3eddf8b640ac0f4"
+    exact = true
+    include = ["*/skills/engineering/prototype/**"]
     refreshPeriod = "168h"
+    stripComponents = 4
+    type = "archive"
+    url = "https://github.com/mattpocock/skills/archive/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d.tar.gz"
 
-[".claude/skills/teach/LEARNING-RECORD-FORMAT.md"]
-    checksum.sha512 = "85226a7442c31b42bcc138bc81f40b325db066ab32a77710e2c7ca162b118decfa93b067b7d3b7c26c8dc79dc8549aa8ceaedf1b4efc6b0de9459b7556ac6279"
-    type = "file"
-    url = "https://raw.githubusercontent.com/mattpocock/skills/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/productivity/teach/LEARNING-RECORD-FORMAT.md"
+[".agents/skills/teach"]
+    checksum.sha512 = "af8dd976a30ec691c7b87dd31e39ec8320f5fc60f706028d5fc1d5b46d7e1435971a5343ad7af58849d099a54892e93d0084d37b04dab65ef3eddf8b640ac0f4"
+    exact = true
+    include = ["*/skills/productivity/teach/**"]
     refreshPeriod = "168h"
-
-[".claude/skills/teach/GLOSSARY-FORMAT.md"]
-    checksum.sha512 = "572674a0a4b273d6825d95b767a723ff4f724f8bb4c83e60b20c4c1bb6ee24163f7d61df24df9806cb732f380fcdc6e2aa517865477f855bfbeda9485dc97b0c"
-    type = "file"
-    url = "https://raw.githubusercontent.com/mattpocock/skills/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/productivity/teach/GLOSSARY-FORMAT.md"
-    refreshPeriod = "168h"
+    stripComponents = 4
+    type = "archive"
+    url = "https://github.com/mattpocock/skills/archive/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d.tar.gz"
 
 [".config/zsh/plugins/zshrc.d"]
     checksum.sha512 = "03637a66a09b5fd7acfd3719e7b376fdd078ff4d0c7832f24fe459b8031f0edaa1b1bcaec843ea0271aa6578ca3c2ba2e789162f8d5ddd25fa0986d6521d06e4"

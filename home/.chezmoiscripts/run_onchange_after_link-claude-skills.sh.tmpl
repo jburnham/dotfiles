@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Claude Code only discovers skills under ~/.claude/skills, so mirror
+# ~/.agents/skills there as per-skill symlinks.
+# Reruns when either directory's entries change.
+# {{ glob (joinPath .chezmoi.homeDir ".agents/skills/*") | join " " | sha256sum }}
+# {{ glob (joinPath .chezmoi.homeDir ".claude/skills/*") | join " " | sha256sum }}
+set -euo pipefail
+
+src="$HOME/.agents/skills"
+dst="$HOME/.claude/skills"
+
+[[ -d $src ]] || exit 0
+mkdir -p "$dst"
+
+for skill in "$src"/*/; do
+  skill=${skill%/}
+  link="$dst/${skill##*/}"
+
+  if [[ -L $link ]]; then
+    target=$(readlink "$link")
+    [[ $target == "$skill" ]] && continue
+  fi
+  if [[ -e $link || -L $link ]]; then
+    echo "link-claude-skills: $link exists and is not a link to $skill, fix it by hand" >&2
+    continue
+  fi
+
+  ln -s "$skill" "$link"
+done
