@@ -1,0 +1,15 @@
+{{ template "agents/code-comments.md" . }}
+{{ template "agents/misc.md" . }}
+{{ template "agents/git-github.md" . }}
+## Memory
+- Facts that span projects go in context files, not `ctx_memory` (magic-context memories are owned by one project and can't be edited from others). Edit the chezmoi source for anything that applies everywhere (`~/.local/share/chezmoi/home/.chezmoitemplates/agents/` for every harness, `home/dot_pi/agent/AGENTS.md.tmpl` for pi only; the deployed file is overwritten on apply), and `~/wk/src/AGENTS.md` for anything that applies to all work repos. Use `ctx_memory` only for facts specific to the current project.
+
+## MCP servers
+- Servers listed in the `mcp_servers` section of the system prompt are connected even when their tools aren't declared to you. Reach them from `codemode` via `describeNamespace("mcp__<server>")`, `searchTools()`, or `ALL_TOOLS` before treating a tool as unavailable.
+
+## Subagent routing (Superpowers SDD)
+When a Superpowers skill dispatches a `general-purpose` subagent, use these pi-subagents agents:
+- Cheap-tier implementer (brief contains the complete code, or single-file mechanical fix): `sdd-implementer-cheap`. Do not override its model or thinking.
+- Standard implementer (prose brief, multi-file, integration work): `worker`.
+- Task reviewer and scoped re-reviewer: `reviewer`.
+- Final whole-branch review: `reviewer`.
