@@ -135,6 +135,7 @@ printf '%s' "$existing" | jq --sort-keys --argjson is_work "$is_work" --arg cred
       }
     }
   | .autoMemoryEnabled = false
+  | .pluginConfigs["cc-plugin-agents-md@builtin"].options.instructionFiles = "claude-md-and-agents-md"
   | if $is_work then
         .enabledPlugins         += {
           "gopls-lsp@claude-plugins-official": true
