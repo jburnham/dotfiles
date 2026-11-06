@@ -1,0 +1,71 @@
+[".agents/skills/code-review-and-quality"]
+    checksum.sha512 = "937c67297dac4554b1442c520bde12f671d8801b797b41db096403c446592150496e2e588f30c07e59573212ed39ecd775556fb8ac38f7731548581e6bc98361"
+    exact = true
+    include = ["*/skills/code-review-and-quality/**"]
+    refreshPeriod = "168h"
+    stripComponents = 3
+    type = "archive"
+    url = "https://github.com/addyosmani/agent-skills/archive/301b02b12bff98e4688e6984af6556802322bbde.tar.gz"
+
+[".agents/skills/code-simplification"]
+    checksum.sha512 = "937c67297dac4554b1442c520bde12f671d8801b797b41db096403c446592150496e2e588f30c07e59573212ed39ecd775556fb8ac38f7731548581e6bc98361"
+    exact = true
+    include = ["*/skills/code-simplification/**"]
+    refreshPeriod = "168h"
+    stripComponents = 3
+    type = "archive"
+    url = "https://github.com/addyosmani/agent-skills/archive/301b02b12bff98e4688e6984af6556802322bbde.tar.gz"
+
+[".agents/skills/security-and-hardening"]
+    checksum.sha512 = "937c67297dac4554b1442c520bde12f671d8801b797b41db096403c446592150496e2e588f30c07e59573212ed39ecd775556fb8ac38f7731548581e6bc98361"
+    exact = true
+    include = ["*/skills/security-and-hardening/**"]
+    refreshPeriod = "168h"
+    stripComponents = 3
+    type = "archive"
+    url = "https://github.com/addyosmani/agent-skills/archive/301b02b12bff98e4688e6984af6556802322bbde.tar.gz"
+
+[".agents/skills/difit"]
+    checksum.sha512 = "340ba931e2395699f3147945b93aa4273ab221a42639c1f655111b035872d4405ece55da0be168c32fd13381e2def36688904f6ba8ab5046050b8aea78052f2b"
+    exact = true
+    include = ["*/skills/difit/**"]
+    refreshPeriod = "168h"
+    stripComponents = 3
+    type = "archive"
+    url = "https://github.com/yoshiko-pg/difit/archive/82a765c037ec28fe7fe90ab2f1e4b5748032b4fa.tar.gz"
+
+[".agents/skills/difit-review"]
+    checksum.sha512 = "340ba931e2395699f3147945b93aa4273ab221a42639c1f655111b035872d4405ece55da0be168c32fd13381e2def36688904f6ba8ab5046050b8aea78052f2b"
+    exact = true
+    include = ["*/skills/difit-review/**"]
+    refreshPeriod = "168h"
+    stripComponents = 3
+    type = "archive"
+    url = "https://github.com/yoshiko-pg/difit/archive/82a765c037ec28fe7fe90ab2f1e4b5748032b4fa.tar.gz"
+
+[".agents/skills/handoff"]
+    checksum.sha512 = "af8dd976a30ec691c7b87dd31e39ec8320f5fc60f706028d5fc1d5b46d7e1435971a5343ad7af58849d099a54892e93d0084d37b04dab65ef3eddf8b640ac0f4"
+    exact = true
+    include = ["*/skills/productivity/handoff/**"]
+    refreshPeriod = "168h"
+    stripComponents = 4
+    type = "archive"
+    url = "https://github.com/mattpocock/skills/archive/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d.tar.gz"
+
+[".agents/skills/prototype"]
+    checksum.sha512 = "af8dd976a30ec691c7b87dd31e39ec8320f5fc60f706028d5fc1d5b46d7e1435971a5343ad7af58849d099a54892e93d0084d37b04dab65ef3eddf8b640ac0f4"
+    exact = true
+    include = ["*/skills/engineering/prototype/**"]
+    refreshPeriod = "168h"
+    stripComponents = 4
+    type = "archive"
+    url = "https://github.com/mattpocock/skills/archive/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d.tar.gz"
+
+[".agents/skills/teach"]
+    checksum.sha512 = "af8dd976a30ec691c7b87dd31e39ec8320f5fc60f706028d5fc1d5b46d7e1435971a5343ad7af58849d099a54892e93d0084d37b04dab65ef3eddf8b640ac0f4"
+    exact = true
+    include = ["*/skills/productivity/teach/**"]
+    refreshPeriod = "168h"
+    stripComponents = 4
+    type = "archive"
+    url = "https://github.com/mattpocock/skills/archive/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d.tar.gz"

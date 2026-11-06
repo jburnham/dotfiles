@@ -2,7 +2,7 @@
 # Claude Code only discovers skills under ~/.claude/skills, so mirror
 # ~/.agents/skills there as per-skill symlinks.
 # Hashes the skill list from source state so a new skill links on the same apply.
-# {{ range $k, $_ := include ".chezmoiexternal.toml" | fromToml }}{{ if hasPrefix ".agents/skills/" $k }} {{ $k }}{{ end }}{{ end }}
+# {{ range $k, $_ := include ".chezmoiexternals/skills.toml" | fromToml }} {{ $k }}{{ end }}
 # {{ glob (joinPath .chezmoi.sourceDir "dot_agents/skills/*") | join " " }}
 set -euo pipefail
 
