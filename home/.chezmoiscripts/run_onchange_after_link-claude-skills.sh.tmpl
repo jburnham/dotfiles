@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Claude Code only discovers skills under ~/.claude/skills, so mirror
 # ~/.agents/skills there as per-skill symlinks.
-# Reruns when either directory's entries change.
-# {{ glob (joinPath .chezmoi.homeDir ".agents/skills/*") | join " " | sha256sum }}
-# {{ glob (joinPath .chezmoi.homeDir ".claude/skills/*") | join " " | sha256sum }}
+# Hashes the skill list from source state so a new skill links on the same apply.
+# {{ range $k, $_ := include ".chezmoiexternal.toml" | fromToml }}{{ if hasPrefix ".agents/skills/" $k }} {{ $k }}{{ end }}{{ end }}
+# {{ glob (joinPath .chezmoi.sourceDir "dot_agents/skills/*") | join " " }}
 set -euo pipefail
 
 src="$HOME/.agents/skills"
