@@ -6,7 +6,7 @@ set -u
 
 command -v git-trim >/dev/null 2>&1 || exit 0
 
-count=$(git trim --dry-run --squashed 2>/dev/null | grep -c 'will be deleted' || true)
+count=$(git trim --squashed --dry-run --porcelain 2>/dev/null | grep -c . || true)
 [[ $count -gt 0 ]] || exit 0
 
 # shellcheck disable=SC2016 # backticks here are markdown literals, not command substitution

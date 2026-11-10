@@ -1,6 +1,6 @@
 [".local/bin/git-trim"]
     type = "file"
-    url = "https://raw.githubusercontent.com/jburnham/git-trim/041df86258b0cde864dd619e5172716338c2d736/git-trim"
-    checksum.sha512 = "2ee38c701d0c9518c7f58e8267d2d5be8e916c7935bc68100cccbc13ce6a9091f0d67464236e0c4fe53032bd9ab8d11f40700cb7884f3f250e4d728bb053214b"
+    url = "https://raw.githubusercontent.com/jburnham/git-trim/b0f081a1741602e16fa0ce8aa2ba1f94bcbb05a8/git-trim"
+    checksum.sha512 = "f17df7af7970b8ae2178297d8efe313a541c4329a8a7f32aba0082433c27b328421268ddf4fa3cd36f3485383993bedb471ba08d776929681fdbf9d0332eaa20"
     executable = true
     refreshPeriod = "168h"
