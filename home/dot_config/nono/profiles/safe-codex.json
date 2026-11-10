@@ -1,0 +1,4 @@
+{
+  "extends": ["nolabs-ai/codex", "safe-base"],
+  "meta": { "name": "safe-codex" }
+}

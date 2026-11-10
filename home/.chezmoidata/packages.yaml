@@ -29,6 +29,7 @@ packages:
       - mise
       - neovim
       - node
+      - nono
       - pipx
       - pnpm
       - pre-commit

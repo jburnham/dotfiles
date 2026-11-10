@@ -1,0 +1,4 @@
+{
+  "extends": ["nolabs-ai/claude", "safe-base"],
+  "meta": { "name": "safe-claude" }
+}

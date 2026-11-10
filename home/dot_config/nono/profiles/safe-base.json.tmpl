@@ -1,0 +1,65 @@
+{
+  "meta": {
+    "name": "safe-base",
+    "description": "Machine-wide grants shared by every safe-* agent profile"
+  },
+  "groups": {
+    "include": ["user_caches_macos", "go_runtime", "go_runtime_macos", "mise_manager"]
+  },
+  "security": {
+    "process_info_mode": "allow_all",
+    "signal_mode": "allow_same_sandbox"
+  },
+  "filesystem": {
+    "read": [
+      "$HOME/.config/mcp2cli",
+      "$HOME/.config/oh-my-posh",
+      "$HOME/.local/bin",
+      "$HOME/.ssh"
+    ],
+    "allow": [
+      "$HOME/wk",
+      "$HOME/.agents",
+      "$HOME/.config/cortexkit",
+      "$HOME/.local/share/cortexkit",
+      "$HOME/.difit",
+      "$HOME/.memsearch",
+      "$HOME/.pi-lens",
+      "$HOME/.omp",
+      "$HOME/.cdk",
+      "$HOME/.claude",
+      "$HOME/.mcp-auth",
+      "$HOME/.cloudflared",
+{{- if .cred_tool }}
+      "$HOME/.local/state/{{ .cred_tool }}",
+{{- end }}
+      "$HOME/.aws",
+      "$HOME/.aws-sso",
+      "$HOME/.docker",
+      "$HOME/.colima/default",
+      "$HOME/.config/op",
+      "$HOME/Library/Keychains",
+      "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t"
+    ],
+    "unix_socket_dir": [
+      "$HOME/.ssh/agent",
+      "$HOME/.colima/default",
+      "$HOME/.config/op",
+      "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t"
+    ],
+    "bypass_protection": [
+      "$HOME/.aws",
+      "$HOME/.docker",
+      "$HOME/.ssh",
+      "$HOME/.config/op",
+      "$HOME/Library/Keychains",
+      "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t"
+    ]
+  },
+  "environment": {
+    "deny_vars": ["*_TOKEN", "*SECRET*", "*_API_KEY", "*PASSWORD*"]
+  },
+  "diagnostics": {
+    "suppress_system_services": ["forbidden-exec-sugid"]
+  }
+}

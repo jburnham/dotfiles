@@ -1,0 +1,4 @@
+{
+  "extends": ["nolabs-ai/opencode", "safe-base"],
+  "meta": { "name": "safe-opencode" }
+}

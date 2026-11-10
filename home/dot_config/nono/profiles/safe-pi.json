@@ -1,0 +1,4 @@
+{
+  "extends": ["nolabs-ai/pi", "safe-base"],
+  "meta": { "name": "safe-pi" }
+}
