@@ -1,0 +1,5 @@
+;; Launch Services needs to stat app bundles to resolve default handlers. If a
+;; sandboxed lookup can't, lsd unregisters the app system-wide (e.g. Firefox as
+;; default browser silently reverts to Safari, on the host too).
+(allow file-read-metadata
+  (regex #"^/Applications/[^/]+\.app$"))
