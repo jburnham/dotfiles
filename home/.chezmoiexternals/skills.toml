@@ -69,3 +69,12 @@
     stripComponents = 4
     type = "archive"
     url = "https://github.com/mattpocock/skills/archive/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d.tar.gz"
+
+[".agents/skills/gh-actions-lock"]
+    checksum.sha512 = "994ace93e232f88ffc938033c28dcd575bfd92a35b986daadc0a38e55bc806c80f8212fb1f6951558b50888a7deba8107df2eea1b1fa3661064bcb082fb4236e"
+    exact = true
+    include = ["*/skills/gh-actions-lock/**"]
+    refreshPeriod = "168h"
+    stripComponents = 3
+    type = "archive"
+    url = "https://github.com/github/gh-actions-lock/archive/90ae563599cf303ff91eb5b46277ff04f5d2b4fc.tar.gz"
