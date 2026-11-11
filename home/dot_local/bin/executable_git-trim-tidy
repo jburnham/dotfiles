@@ -19,6 +19,16 @@ done < <(git trim --squashed "$@" --dry-run --porcelain 2>/dev/null || true)
 
 [[ ${#worktrees[@]} -gt 0 ]] || exit "$status"
 
+# `git worktree remove` refuses worktrees whose .git link is broken; those need `git worktree prune`.
+prunable=$'\n'
+while read -r key value; do
+  case $key in
+    worktree) current=$value ;;
+    prunable) prunable+="$current"$'\n' ;;
+    *) ;;
+  esac
+done < <(git worktree list --porcelain || true)
+
 printf '\n'
 if [[ $dry_run -eq 1 ]]; then
   msg=$(printf '[git trim] %d branch(es) would be blocked by worktrees. To unblock, you would need to run:' "${#worktrees[@]}")
@@ -30,7 +40,13 @@ if [[ -t 1 ]]; then
 else
   printf '%s\n' "$msg"
 fi
+need_prune=0
 for path in "${worktrees[@]}"; do
-  printf '  git worktree remove %q\n' "$path"
+  if [[ $prunable == *$'\n'"$path"$'\n'* ]]; then
+    need_prune=1
+  else
+    printf '  git worktree remove %q\n' "$path"
+  fi
 done
+[[ $need_prune -eq 1 ]] && printf '  git worktree prune\n'
 printf '  git trim --squashed\n'
